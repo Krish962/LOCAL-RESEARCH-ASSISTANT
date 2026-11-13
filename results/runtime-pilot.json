@@ -1,0 +1,113 @@
+{
+  "kind": "real_component_pilot",
+  "config": {
+    "corpus_id": "course_rag_v1",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "reranker_model": "cross-encoder/ms-marco-MiniLM-L6-v2",
+    "generator_model": "qwen2.5:3b",
+    "embedding_dimension": 384,
+    "embedding_batch_size": 16,
+    "reranker_batch_size": 8,
+    "chunk_tokens": 180,
+    "chunk_overlap": 30,
+    "bm25_k1": 1.5,
+    "bm25_b": 0.75,
+    "branch_top_k": 20,
+    "rrf_constant": 60,
+    "rerank_top_n": 20,
+    "context_chunks": 4,
+    "context_window": 4096,
+    "prompt_tokens": 3072,
+    "output_tokens": 256,
+    "safety_tokens": 128,
+    "temperature": 0.0,
+    "seed": 42,
+    "cpu_threads": 4,
+    "extractor": "pypdf",
+    "ollama_url": "http://127.0.0.1:11434",
+    "download_attempts": 3,
+    "arxiv_delay": 3.0
+  },
+  "components": {
+    "encoder": {
+      "status": "passed",
+      "load_and_encode_seconds": 12.274904899997637,
+      "identity": "7c977e57bbbf423556f27319fdfdc87aeb440ccbd4defcf8aad1a2dabab1f6bf",
+      "revision": null
+    },
+    "reranker": {
+      "status": "passed",
+      "scores": [
+        9.36134147644043,
+        -8.97193717956543
+      ],
+      "pair_lengths": [
+        18,
+        17
+      ],
+      "revision": null,
+      "seconds": 0.21805959998164326
+    },
+    "generator": {
+      "status": "passed",
+      "seconds": 6.630915999994613,
+      "raw": {
+        "model": "qwen2.5:3b",
+        "created_at": "2026-11-11T09:18:42.1664701Z",
+        "done": true,
+        "done_reason": "stop",
+        "total_duration": 6615714000,
+        "load_duration": 5440400,
+        "prompt_eval_count": 205,
+        "prompt_eval_duration": 3764780000,
+        "eval_count": 26,
+        "eval_duration": 2826848000,
+        "message": {
+          "role": "assistant",
+          "content": "{\"status\":\"answered\",\"claims\":[{\"text\":\"Mars is called the Red Planet.\",\"source_ids\":[\"S1\"]}] }",
+          "thinking": null,
+          "images": null,
+          "tool_name": null,
+          "tool_calls": null
+        },
+        "logprobs": null,
+        "counted_prompt_tokens": 205,
+        "token_counter": "Qwen/Qwen2.5-3B-Instruct chat template; compare actual Ollama count"
+      },
+      "parsed": {
+        "status": "answered",
+        "answer": "Mars is called the Red Planet. [S1]"
+      }
+    }
+  },
+  "versions": {
+    "torch": "2.15.0+cpu",
+    "sentence-transformers": "6.2.0",
+    "transformers": "5.22.2",
+    "qdrant-client": "1.20.0",
+    "ollama": "0.6.3"
+  },
+  "memory_available_before": 3383300096,
+  "ollama_models": {
+    "models": [
+      {
+        "model": "qwen2.5:3b",
+        "modified_at": "2026-11-11T14:13:48.772929+05:30",
+        "digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+        "size": 1929912432,
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "3.1B",
+          "quantization_level": "Q4_K_M"
+        }
+      }
+    ]
+  },
+  "status": "passed",
+  "memory_available_after": 2627710976
+}

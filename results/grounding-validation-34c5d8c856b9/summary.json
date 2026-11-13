@@ -1,0 +1,32 @@
+{
+  "arms": [
+    {
+      "arm": "baseline",
+      "cases": 16,
+      "answerable_cases": 8,
+      "answered_answerable": 8,
+      "false_refusals": 0,
+      "missing_evidence_cases": 6,
+      "answered_missing_evidence": 5,
+      "correct_missing_evidence_refusals": 1,
+      "runtime_failures": 0,
+      "mean_seconds": 30.90013907499815
+    },
+    {
+      "arm": "grounded",
+      "cases": 16,
+      "answerable_cases": 8,
+      "answered_answerable": 2,
+      "false_refusals": 6,
+      "missing_evidence_cases": 6,
+      "answered_missing_evidence": 0,
+      "correct_missing_evidence_refusals": 6,
+      "runtime_failures": 0,
+      "mean_seconds": 35.17235430624714
+    }
+  ],
+  "limitations": [
+    "Answer/refusal counts are not independent factuality scores.",
+    "Original test questions were already inspected; this validation uses newly frozen questions on the same corpus."
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "adapter": "ollama-native-schema-v1",
+  "model": "llama3.2:3b",
+  "response_model": "NLIStatementOutput",
+  "prompt": "Your task is to judge the faithfulness of a series of statements based on a given context. For each statement you must return verdict as 1 if the statement can be directly inferred based on the context or 0 if the statement can not be directly inferred based on the context.\nPlease return the output in a JSON format that complies with the following schema as specified in JSON Schema:\n{\"$defs\": {\"StatementFaithfulnessAnswer\": {\"description\": \"Individual statement with reason and verdict for NLI evaluation.\", \"properties\": {\"statement\": {\"description\": \"the original statement, word-by-word\", \"title\": \"Statement\", \"type\": \"string\"}, \"reason\": {\"description\": \"the reason of the verdict\", \"title\": \"Reason\", \"type\": \"string\"}, \"verdict\": {\"description\": \"the verdict(0/1) of the faithfulness\", \"title\": \"Verdict\", \"type\": \"integer\"}}, \"required\": [\"statement\", \"reason\", \"verdict\"], \"title\": \"StatementFaithfulnessAnswer\", \"type\": \"object\"}}, \"description\": \"Structured output for NLI statement evaluation.\", \"properties\": {\"statements\": {\"description\": \"Evaluated statements with verdicts\", \"items\": {\"$ref\": \"#/$defs/StatementFaithfulnessAnswer\"}, \"title\": \"Statements\", \"type\": \"array\"}}, \"required\": [\"statements\"], \"title\": \"NLIStatementOutput\", \"type\": \"object\"}Do not use single quotes in your response but double quotes,properly escaped with a backslash.\n\n--------EXAMPLES-----------\nExample 1\nInput: {\n    \"context\": \"John is a student at XYZ University. He is pursuing a degree in Computer Science. He is enrolled in several courses this semester, including Data Structures, Algorithms, and Database Management. John is a diligent student and spends a significant amount of time studying and completing assignments. He often stays late in the library to work on his projects.\",\n    \"statements\": [\n        \"John is majoring in Biology.\",\n        \"John is taking a course on Artificial Intelligence.\",\n        \"John is a dedicated student.\",\n        \"John has a part-time job.\"\n    ]\n}\nOutput: {\n    \"statements\": [\n        {\n            \"statement\": \"John is majoring in Biology.\",\n            \"reason\": \"John's major is explicitly stated as Computer Science, not Biology.\",\n            \"verdict\": 0\n        },\n        {\n            \"statement\": \"John is taking a course on Artificial Intelligence.\",\n            \"reason\": \"The context mentions courses in Data Structures, Algorithms, and Database Management, but does not mention Artificial Intelligence.\",\n            \"verdict\": 0\n        },\n        {\n            \"statement\": \"John is a dedicated student.\",\n            \"reason\": \"The context states that John is a diligent student who spends a significant amount of time studying and completing assignments.\",\n            \"verdict\": 1\n        },\n        {\n            \"statement\": \"John has a part-time job.\",\n            \"reason\": \"There is no information in the context about John having a part-time job.\",\n            \"verdict\": 0\n        }\n    ]\n}\n-----------------------------\n\nNow perform the same with the following input\ninput: {\n    \"context\": \"Question + Passage 1encoder\\nQuestion + Passage 2encoder\\nQuestion + Passage Nencoder\\ndecoder Answerconcat …\\n…\\n…\\n…\\nFigure 2: Architecture of the Fusion-in-Decoder method.\\nrepresentations. Then, a sequence-to-sequence\\nmodel generates the answer, taking as input the re-\\ntrieved passages in addition to the question. While\\nconceptually simple, this method sets new state-of-\\nthe-art results on the TriviaQA and NaturalQues-\\ntions benchmarks. In particular, we show that the\\nperformance of our method signiﬁcantly improves\\nwhen the number of retrieved passages increases.\\nWe believe that this is evidence that generative mod-\\nels are good at combining evidence from multiple\\npassages, compared to extractive ones.\\n2 Related work\\nOpen domain question answering is the task\\nof answering general domain questions, in which\\nAlan Turing\\nwas a British\\ncomputer\\nscientist.\\nBorn in Maida\\nVale, London…\\nWhere was Alan\\nTuring born?\\nGenerative\\nseq2seq model\\nMaida Vale,\\nLondon\\nFigure 1: A simple approach to open domain question\\nanswering. First, it retrieves support text passages from\\nan external source of knowledge such as Wikipedia.\\nThen, a generative encoder-decoder model produces\\nthe answer, conditioned on the question and the re-\\ntrieved passages. This approach scales well with the\\nnumber of retrieved passages, as the performance keeps\\nimproving when retrieving up to one hundred passages.\\nsupport documents, before extracting the answer\\nfrom these documents. Different retrieval tech-\\nniques have been considered, either using sparse\\nrepresentations based on TF/IDF or using dense\\nembeddings (Guu et al., 2020; Karpukhin et al.,\\n2020).\\nLeveraging Passage Retrieval with Generative Models\\nfor Open Domain Question Answering\\nGautier Izacard1,2,3 Edouard Grave1\\n1 Facebook AI Research, Paris\\n2 ENS, PSL University, Paris\\n3 Inria, Paris\\ngizacard|egrave@fb.com\\nAbstract\\nGenerative models for open domain question\\nanswering have proven to be competitive, with-\\nout resorting to external knowledge. While\\npromising, this approach requires to use mod-\\nels with billions of parameters, which are ex-\\npensive to train and query. In this paper, we\\ninvestigate how much these models can ben-\\neﬁt from retrieving text passages, potentially\\ncontaining evidence. We obtain state-of-the-\\nart results on the Natural Questions and Triv-\\niaQA open benchmarks. Interestingly, we ob-\\nserve that the performance of this method sig-\\nto\\nbe aggregated, compared to extractive approaches.\\nOur method also performs better than other genera-\\ntive models, showing that scaling to large number\\nof passages and processing them jointly leads to\\nimprovement in accuracy. Second, we observe that\\nusing additional knowledge in generative models\\nby using retrieval lead to important performance\\ngains. On NaturalQuestions, the closed book T5\\nmodel obtains 36.6% accuracy with 11B parame-\\nters, while our approach obtains 44.1% with 770M\\nparameters plus Wikipedia with BM25 retrieval.\\nBoth methods use roughly the same amount of\\nmemory to store information, indicating that text\\nbased explicit memories are competitive for knowl-\\nedge retrieval tasks.\\nScaling with number of passages. In Figure 3,\\nwe report the performance with respect to the\",\n    \"statements\": [\n        \"The performance of the method improves when the number of retrieved passages increases.\",\n        \"The number of retrieved passages has a positive impact on the performance of the method.\"\n    ]\n}\nOutput: ",
+  "schema": {
+    "$defs": {
+      "StatementFaithfulnessAnswer": {
+        "description": "Individual statement with reason and verdict for NLI evaluation.",
+        "properties": {
+          "statement": {
+            "description": "the original statement, word-by-word",
+            "title": "Statement",
+            "type": "string"
+          },
+          "reason": {
+            "description": "the reason of the verdict",
+            "title": "Reason",
+            "type": "string"
+          },
+          "verdict": {
+            "description": "the verdict(0/1) of the faithfulness",
+            "title": "Verdict",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "statement",
+          "reason",
+          "verdict"
+        ],
+        "title": "StatementFaithfulnessAnswer",
+        "type": "object"
+      }
+    },
+    "description": "Structured output for NLI statement evaluation.",
+    "properties": {
+      "statements": {
+        "description": "Evaluated statements with verdicts",
+        "items": {
+          "$ref": "#/$defs/StatementFaithfulnessAnswer"
+        },
+        "title": "Statements",
+        "type": "array"
+      }
+    },
+    "required": [
+      "statements"
+    ],
+    "title": "NLIStatementOutput",
+    "type": "object"
+  },
+  "status": "completed",
+  "raw": {
+    "model": "llama3.2:3b",
+    "created_at": "2026-11-11T12:54:28.3612504Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 49207093500,
+    "load_duration": 9460500,
+    "prompt_eval_count": 1542,
+    "prompt_eval_duration": 30579581000,
+    "eval_count": 120,
+    "eval_duration": 18588639000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"statements\": [\n    {\n      \"statement\": \"The performance of the method improves when the number of retrieved passages increases.\",\n      \"reason\": \"The context explicitly states that the performance improves when the number of retrieved passages increases.\",\n      \"verdict\": 1\n    },\n    {\n      \"statement\": \"The number of retrieved passages has a positive impact on the performance of the method.\",\n      \"reason\": \"The context states that the performance improves when the number of retrieved passages increases, implying a positive impact.\",\n      \"verdict\": 1\n    }\n  ]\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "seconds": 49.203000000095926
+}

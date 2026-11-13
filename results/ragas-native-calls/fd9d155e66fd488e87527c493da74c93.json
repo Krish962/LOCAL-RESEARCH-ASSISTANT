@@ -1,0 +1,57 @@
+{
+  "adapter": "ollama-native-schema-v1",
+  "model": "llama3.2:3b",
+  "response_model": "NLIStatementOutput",
+  "prompt": "Your task is to judge the faithfulness of a series of statements based on a given context. For each statement you must return verdict as 1 if the statement can be directly inferred based on the context or 0 if the statement can not be directly inferred based on the context.\nPlease return the output in a JSON format that complies with the following schema as specified in JSON Schema:\n{\"$defs\": {\"StatementFaithfulnessAnswer\": {\"description\": \"Individual statement with reason and verdict for NLI evaluation.\", \"properties\": {\"statement\": {\"description\": \"the original statement, word-by-word\", \"title\": \"Statement\", \"type\": \"string\"}, \"reason\": {\"description\": \"the reason of the verdict\", \"title\": \"Reason\", \"type\": \"string\"}, \"verdict\": {\"description\": \"the verdict(0/1) of the faithfulness\", \"title\": \"Verdict\", \"type\": \"integer\"}}, \"required\": [\"statement\", \"reason\", \"verdict\"], \"title\": \"StatementFaithfulnessAnswer\", \"type\": \"object\"}}, \"description\": \"Structured output for NLI statement evaluation.\", \"properties\": {\"statements\": {\"description\": \"Evaluated statements with verdicts\", \"items\": {\"$ref\": \"#/$defs/StatementFaithfulnessAnswer\"}, \"title\": \"Statements\", \"type\": \"array\"}}, \"required\": [\"statements\"], \"title\": \"NLIStatementOutput\", \"type\": \"object\"}Do not use single quotes in your response but double quotes,properly escaped with a backslash.\n\n--------EXAMPLES-----------\nExample 1\nInput: {\n    \"context\": \"John is a student at XYZ University. He is pursuing a degree in Computer Science. He is enrolled in several courses this semester, including Data Structures, Algorithms, and Database Management. John is a diligent student and spends a significant amount of time studying and completing assignments. He often stays late in the library to work on his projects.\",\n    \"statements\": [\n        \"John is majoring in Biology.\",\n        \"John is taking a course on Artificial Intelligence.\",\n        \"John is a dedicated student.\",\n        \"John has a part-time job.\"\n    ]\n}\nOutput: {\n    \"statements\": [\n        {\n            \"statement\": \"John is majoring in Biology.\",\n            \"reason\": \"John's major is explicitly stated as Computer Science, not Biology.\",\n            \"verdict\": 0\n        },\n        {\n            \"statement\": \"John is taking a course on Artificial Intelligence.\",\n            \"reason\": \"The context mentions courses in Data Structures, Algorithms, and Database Management, but does not mention Artificial Intelligence.\",\n            \"verdict\": 0\n        },\n        {\n            \"statement\": \"John is a dedicated student.\",\n            \"reason\": \"The context states that John is a diligent student who spends a significant amount of time studying and completing assignments.\",\n            \"verdict\": 1\n        },\n        {\n            \"statement\": \"John has a part-time job.\",\n            \"reason\": \"There is no information in the context about John having a part-time job.\",\n            \"verdict\": 0\n        }\n    ]\n}\n-----------------------------\n\nNow perform the same with the following input\ninput: {\n    \"context\": \"and GPU memory requirements.\\nRecent models such as RAG and REALM\\nhave introduced retrieval into conditional gen-\\neration. These models incorporate neural ini-\\ntial retrieval from a corpus of passages. We\\nbuild on this line of research, proposing Re2G,\\nwhich combines both neural initial retrieval\\nand reranking into a BART-based sequence-\\nto-sequence generation. Our reranking ap-\\nproach also permits merging retrieval results\\nfrom sources with incomparable scores, en-\\nabling an ensemble of BM25 and neural initial\\nretrieval. To train our system end-to-end, we\\nintroduce a novel variation of knowledge dis-\\ntillation to train the initial retrieval, reranker\\nand generation using only ground truth on the\\ntarget sequence output. We ﬁnd large gains in\\nfour diverse tasks: zero-shot slot ﬁlling, ques-\\nand propose a new ap-\\nproach that we call Re2G (Retrieve, Rerank,\\nGenerate), which combines both neural initial re-\\ntrieval and reranking into a BART-based sequence-\\nto-sequence generation.\\nThere are two particular aspects on which our ap-\\nproach is different from the previous works. Firstly,\\nour reranking approach permits merging retrieval\\nresults from sources with incomparable scores, e.g.\\nenabling an ensemble of BM25 and neural initial\\nretrieval. Secondly, to train our system end-to-end,\\nwe introduce a novel variation of knowledge dis-\\ntillation to train the initial retrieval, reranker and\\ngeneration using only ground truth on the target\\nsequence output.\\nThe KILT benchmark [Petroni et al., 2021] has\\nbeen recently introduced to evaluate the capabili-\\ntasks, especially in generating human like texts.\\nHowever, such large transformers’ capability is\\ntied to the increasingly larger parameter spaces on\\nwhich they are trained.\\n1https://github.com/IBM/\\nkgi-slot-filling/tree/re2g\\nRecently, there has been work towards trans-\\nformers that make use of non-parametric knowl-\\nedge. REALM (Retrieval Augmented Language\\nModel) [Guu et al., 2020] and RAG (Retrieval Aug-\\nmented Generation) [Lewis et al., 2020b] both use\\nan indexed corpus of passages to support condi-\\ntional generation. By using the corpus as a source\\nof knowledge these models can extend the informa-\\ntion available to the model by tens or even hundreds\\nof gigabytes with a sub-linear scaling in computa-\\ntion cost.\\nRe2G: Retrieve, Rerank, Generate\\nMichael Glass1, Gaetano Rossiello1, Md Faisal Mahbub Chowdhury1,\\nAnkita Rajaram Naik1 2, Pengshan Cai1 2, Alﬁo Gliozzo1\\n1 IBM Research AI, Yorktown Heights, NY , USA\\n2 University of Massachusetts Amherst, MA, USA\\nAbstract\\nAs demonstrated by GPT-3 and T5, transform-\\ners grow in capability as parameter spaces be-\\ncome larger and larger. However, for tasks\\nthat require a large amount of knowledge, non-\\nparametric memory allows models to grow dra-\\nmatically with a sub-linear increase in compu-\\ntational cost and GPU memory requirements.\\nRecent models such as RAG and REALM\\nhave introduced retrieval into conditional gen-\\neration. These models incorporate neural ini-\",\n    \"statements\": [\n        \"Re2G ensemble uses retrieval and generation methods.\",\n        \"Re2G ensemble is used for retrieval and generation tasks.\",\n        \"Re2G uses a BART-based generation model family.\",\n        \"Re2G uses a BART-based generation model.\",\n        \"Re2G uses a BART model.\",\n        \"Re2G uses a BART generation model.\",\n        \"Re2G uses a BART family of generation models.\",\n        \"Re2G uses a BART-based generation model family.\",\n        \"Re2G uses a BART-based generation model.\",\n        \"Re2G uses a BART generation model.\"\n    ]\n}\nOutput: ",
+  "schema": {
+    "$defs": {
+      "StatementFaithfulnessAnswer": {
+        "description": "Individual statement with reason and verdict for NLI evaluation.",
+        "properties": {
+          "statement": {
+            "description": "the original statement, word-by-word",
+            "title": "Statement",
+            "type": "string"
+          },
+          "reason": {
+            "description": "the reason of the verdict",
+            "title": "Reason",
+            "type": "string"
+          },
+          "verdict": {
+            "description": "the verdict(0/1) of the faithfulness",
+            "title": "Verdict",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "statement",
+          "reason",
+          "verdict"
+        ],
+        "title": "StatementFaithfulnessAnswer",
+        "type": "object"
+      }
+    },
+    "description": "Structured output for NLI statement evaluation.",
+    "properties": {
+      "statements": {
+        "description": "Evaluated statements with verdicts",
+        "items": {
+          "$ref": "#/$defs/StatementFaithfulnessAnswer"
+        },
+        "title": "Statements",
+        "type": "array"
+      }
+    },
+    "required": [
+      "statements"
+    ],
+    "title": "NLIStatementOutput",
+    "type": "object"
+  },
+  "status": "failed",
+  "error_type": "CancelledError",
+  "error": "",
+  "seconds": 85.76599999994505
+}

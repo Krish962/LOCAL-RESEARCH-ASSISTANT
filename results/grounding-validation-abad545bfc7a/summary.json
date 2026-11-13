@@ -1,0 +1,33 @@
+{
+  "arms": [
+    {
+      "arm": "baseline",
+      "cases": 40,
+      "answerable_cases": 28,
+      "answered_answerable": 27,
+      "false_refusals": 0,
+      "missing_evidence_cases": 8,
+      "answered_missing_evidence": 8,
+      "correct_missing_evidence_refusals": 0,
+      "runtime_failures": 1,
+      "mean_seconds": 27.102911637499346
+    },
+    {
+      "arm": "grounded",
+      "cases": 40,
+      "answerable_cases": 28,
+      "answered_answerable": 22,
+      "false_refusals": 6,
+      "missing_evidence_cases": 8,
+      "answered_missing_evidence": 0,
+      "correct_missing_evidence_refusals": 8,
+      "runtime_failures": 0,
+      "mean_seconds": 33.790082832501504
+    }
+  ],
+  "evaluation_protocol": "New question wording frozen before this dataset is evaluated; same corpus and some related fact topics as development sets.",
+  "limitations": [
+    "Answer/refusal counts are not independent factuality scores.",
+    "Consult the question-set protocol; repeated debugging on a set makes later runs regression evidence."
+  ]
+}

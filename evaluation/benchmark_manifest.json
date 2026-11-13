@@ -1,0 +1,15 @@
+{
+  "status": "assistant_source_checked_human_review_pending",
+  "snapshot_id": "ec55e9ac57a5d242ae1a2a41",
+  "questions": 40,
+  "answerable": 32,
+  "dev": 10,
+  "test": 30,
+  "questions_hash": "2df9b6c973b34958306a39cc5bfb0c63f65d4ad9f9dae7c57fcad9ad72196a9d",
+  "limitations": [
+    "Small fixed-corpus benchmark",
+    "Assistant source-checked, not independently human-validated",
+    "Evidence annotations are not exhaustive semantic relevance judgments",
+    "Current paper versions are frozen, not universally latest"
+  ]
+}

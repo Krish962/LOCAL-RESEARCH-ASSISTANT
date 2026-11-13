@@ -1,0 +1,20 @@
+{
+  "status": "coverage_checks_passed",
+  "sets": [
+    {
+      "passed": true,
+      "answerable_cases": 28,
+      "answered_answerable": 22,
+      "coverage": 0.7857142857142857,
+      "minimum_coverage": 0.75,
+      "unanswerable_cases": 12,
+      "answered_unanswerable": 0,
+      "correct_refusals": 12,
+      "runtime_failures": 0,
+      "interpretation": "Coverage and known-negative controls only; not independently reviewed factual accuracy.",
+      "questions": "final_validation_40.jsonl",
+      "run": "C:\\Users\\asus\\Downloads\\FLLM\\AI-Assistant\\results\\grounding-validation-abad545bfc7a"
+    }
+  ],
+  "limitation": "Coverage is not factual accuracy. Check each dataset protocol and review answers against sources."
+}

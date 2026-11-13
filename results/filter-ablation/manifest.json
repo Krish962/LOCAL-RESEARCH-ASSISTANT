@@ -1,0 +1,6 @@
+{
+  "cases": 12,
+  "arms": 6,
+  "status": "complete",
+  "scope": "Experimental disabling of user filters only; active corpus/readiness remain enforced. Production never relaxes filters."
+}

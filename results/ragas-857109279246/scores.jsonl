@@ -1,0 +1,29 @@
+{"question_id": "single-dpr", "metric": "faithfulness", "status": "completed", "cache_hit": true, "value": 1.0, "reason": null, "seconds": 71.93800000008196}
+{"question_id": "single-dpr", "metric": "context_recall", "status": "completed", "cache_hit": true, "value": 1.0, "reason": null, "seconds": 60.10900000005495}
+{"question_id": "single-dpr", "metric": "context_precision", "status": "completed", "cache_hit": true, "value": 0.999999999975, "reason": null, "seconds": 69.375}
+{"question_id": "single-dpr", "metric": "answer_relevancy", "status": "completed", "cache_hit": true, "value": 0.9267640857939411, "reason": null, "seconds": 22.688000000081956}
+{"question_id": "single-fid", "metric": "faithfulness", "status": "completed", "cache_hit": false, "value": 1.0, "reason": null, "seconds": 66.625}
+{"question_id": "single-fid", "metric": "context_recall", "status": "failed", "cache_hit": false, "value": null, "error_type": "ReadTimeout", "error": "", "seconds": 150.01500000001397}
+{"question_id": "single-fid", "metric": "context_precision", "status": "completed", "cache_hit": false, "value": 0.999999999975, "reason": null, "seconds": 84.01599999994505}
+{"question_id": "single-fid", "metric": "answer_relevancy", "status": "completed", "cache_hit": false, "value": 0.6077288244250891, "reason": null, "seconds": 26.625}
+{"question_id": "single-colbert", "metric": "faithfulness", "status": "completed", "cache_hit": false, "value": 1.0, "reason": null, "seconds": 50.01600000006147}
+{"question_id": "single-colbert", "metric": "context_recall", "status": "completed", "cache_hit": false, "value": 0.5, "reason": null, "seconds": 76.32799999997951}
+{"question_id": "single-colbert", "metric": "context_precision", "status": "completed", "cache_hit": false, "value": 0.999999999975, "reason": null, "seconds": 58.65700000000652}
+{"question_id": "single-colbert", "metric": "answer_relevancy", "status": "completed", "cache_hit": false, "value": 0.850971744598188, "reason": null, "seconds": 11.812000000034459}
+{"question_id": "single-pyserini", "metric": "faithfulness", "status": "completed", "cache_hit": false, "value": 1.0, "reason": null, "seconds": 75.29700000002049}
+{"question_id": "single-pyserini", "metric": "context_recall", "status": "completed", "cache_hit": false, "value": 0.375, "reason": null, "seconds": 125.375}
+{"question_id": "single-pyserini", "metric": "context_precision", "status": "completed", "cache_hit": false, "value": 0.999999999975, "reason": null, "seconds": 63.70299999997951}
+{"question_id": "single-pyserini", "metric": "answer_relevancy", "status": "completed", "cache_hit": false, "value": 0.8117056731664433, "reason": null, "seconds": 12.577999999979511}
+{"question_id": "single-beir", "metric": "faithfulness", "status": "completed", "cache_hit": false, "value": 0.9166666666666666, "reason": null, "seconds": 168.57800000009593}
+{"question_id": "single-beir", "metric": "context_recall", "status": "failed", "cache_hit": false, "value": null, "error_type": "ReadTimeout", "error": "", "seconds": 150.0}
+{"question_id": "single-beir", "metric": "context_precision", "status": "completed", "cache_hit": false, "value": 0.999999999975, "reason": null, "seconds": 63.26599999994505}
+{"question_id": "single-beir", "metric": "answer_relevancy", "status": "completed", "cache_hit": false, "value": 0.26501451029569284, "reason": null, "seconds": 15.688000000081956}
+{"question_id": "single-splade", "metric": "faithfulness", "status": "completed", "cache_hit": false, "value": 1.0, "reason": null, "seconds": 55.0}
+{"question_id": "single-splade", "metric": "context_recall", "status": "failed", "cache_hit": false, "value": null, "error_type": "ReadTimeout", "error": "", "seconds": 150.01599999994505}
+{"question_id": "single-splade", "metric": "context_precision", "status": "completed", "cache_hit": false, "value": 0.999999999975, "reason": null, "seconds": 60.43700000003446}
+{"question_id": "single-splade", "metric": "answer_relevancy", "status": "completed", "cache_hit": false, "value": 0.5680515871714086, "reason": null, "seconds": 13.140999999945052}
+{"question_id": "single-colbert2", "metric": "faithfulness", "status": "completed", "cache_hit": false, "value": 1.0, "reason": null, "seconds": 54.45299999997951}
+{"question_id": "single-colbert2", "metric": "context_recall", "status": "completed", "cache_hit": false, "value": 0.4, "reason": null, "seconds": 97.34399999992456}
+{"question_id": "single-colbert2", "metric": "context_precision", "status": "completed", "cache_hit": false, "value": 0.9999999999666667, "reason": null, "seconds": 53.06299999996554}
+{"question_id": "single-colbert2", "metric": "answer_relevancy", "status": "completed", "cache_hit": false, "value": 0.9671569416474252, "reason": null, "seconds": 13.969000000040978}
+{"question_id": "single-re2g", "metric": "faithfulness", "status": "failed", "cache_hit": false, "value": null, "error_type": "TimeoutError", "error": "", "seconds": 103.71900000004098}

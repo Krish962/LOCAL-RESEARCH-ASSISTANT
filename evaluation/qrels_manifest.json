@@ -1,0 +1,7 @@
+{
+  "questions": 6,
+  "judged_passages": 58,
+  "cutoff": 4,
+  "scope": "All final-context passages pooled across four retrieval variants for six diagnostic test questions selected before answer scoring; not a random representative sample. Report subset size and judgment coverage.",
+  "reviewer": "assistant source-text review, not independent human labels"
+}

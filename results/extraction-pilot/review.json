@@ -1,0 +1,44 @@
+{
+  "reviewer": "assistant source/visual inspection; not independent human validation",
+  "selected_extractor": "pypdf",
+  "reason": "Two-column prose became spurious table cells and joined words in default MarkItDown; pypdf retained the sampled anchors. Both have equation/table limitations.",
+  "scope": "six development pages; literal anchor recovery is not full text accuracy",
+  "anchors": [
+    {
+      "page": "2307.03172-p1",
+      "anchor": "Lost in the Middle",
+      "pypdf_anchor_present": true,
+      "markitdown_anchor_present": false
+    },
+    {
+      "page": "2307.03172-p3",
+      "anchor": "NaturalQuestions-Open",
+      "pypdf_anchor_present": true,
+      "markitdown_anchor_present": true
+    },
+    {
+      "page": "2005.11401-p2",
+      "anchor": "Maximum Inner Product Search",
+      "pypdf_anchor_present": true,
+      "markitdown_anchor_present": false
+    },
+    {
+      "page": "2005.11401-p3",
+      "anchor": "BART-large",
+      "pypdf_anchor_present": true,
+      "markitdown_anchor_present": true
+    },
+    {
+      "page": "2309.15217-p2",
+      "anchor": "SelfCheckGPT",
+      "pypdf_anchor_present": true,
+      "markitdown_anchor_present": true
+    },
+    {
+      "page": "2005.11401-p6",
+      "anchor": "RAG-Seq.",
+      "pypdf_anchor_present": true,
+      "markitdown_anchor_present": true
+    }
+  ]
+}

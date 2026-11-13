@@ -1,0 +1,9 @@
+{
+  "question_id": "single-dpr",
+  "metric": "faithfulness",
+  "status": "completed",
+  "cache_hit": false,
+  "value": 1.0,
+  "reason": null,
+  "seconds": 71.93800000008196
+}

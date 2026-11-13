@@ -1,0 +1,12 @@
+{
+  "snapshot_id": "ec55e9ac57a5d242ae1a2a41",
+  "questions_hash": "2df9b6c973b34958306a39cc5bfb0c63f65d4ad9f9dae7c57fcad9ad72196a9d",
+  "config_hash": "7e6f60bb7f8ba5e0b608f569cb5b8069d127c45671bc780cb5e2cf306f6579b5",
+  "cases": 40,
+  "definitions": {
+    "known_span_ndcg_precision": "Exact coverage of annotated source spans; not exhaustive semantic relevance. Grade 2=contains an annotated supporting quote; 0=does not contain that span. Other valid evidence may be unannotated.",
+    "evidence_recall": "Verified evidence groups, alternatives supported by a returned passage."
+  },
+  "semantic_qrels_status": "58 assistant source-checked pooled judgments across six diagnostic questions; independent human review pending",
+  "qrels_hash": "096736c36927a51ccca6cf29d5ab359a01db7af0f800db7cb93e300640ab3a38"
+}

@@ -1,0 +1,9 @@
+{
+  "question_id": "single-colbert2",
+  "metric": "answer_relevancy",
+  "status": "completed",
+  "cache_hit": false,
+  "value": 0.9671569416474252,
+  "reason": null,
+  "seconds": 13.969000000040978
+}

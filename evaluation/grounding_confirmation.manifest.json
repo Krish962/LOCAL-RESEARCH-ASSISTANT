@@ -1,0 +1,11 @@
+{
+  "questions": 8,
+  "answerable": 4,
+  "missing_evidence": 2,
+  "no_match": 2,
+  "questions_hash": "73eea56b98a01e3962220acfc267a1781cf3f69a2346fa2c6767384dcc3c86b5",
+  "snapshot_id": "ec55e9ac57a5d242ae1a2a41",
+  "scope": "New questions/facts on the same frozen corpus; not new papers or independent human labels",
+  "frozen_before_answer_generation": true,
+  "evaluation_protocol": "regression_after_policy_debugging; independent human review pending"
+}

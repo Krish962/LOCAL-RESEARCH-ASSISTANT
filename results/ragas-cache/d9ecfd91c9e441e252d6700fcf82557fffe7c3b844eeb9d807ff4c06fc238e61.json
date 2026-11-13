@@ -1,0 +1,10 @@
+{
+  "question_id": "single-re2g",
+  "metric": "faithfulness",
+  "status": "failed",
+  "cache_hit": false,
+  "value": null,
+  "error_type": "TimeoutError",
+  "error": "",
+  "seconds": 103.71900000004098
+}

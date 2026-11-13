@@ -1,0 +1,18 @@
+{
+  "identity": {
+    "questions_hash": "6df09fbf0420f93931858040ffa84dbcc41e847308f7f7a52d72f8716c9d35bd",
+    "config_hash": "b5fa6d1d32bb1fe80bb6c6778fe69a505e8dd5c0a9f2a93c5657502e0f502430",
+    "code_hash": "1b8219a4469b886cd26d6c45d2a69b209a3ea2d3e9b14477a3db9a95b44cabab",
+    "baseline_checkpoint_hash": "2d8a958ebf8bd7d44059ee676bccf9daff70c0b745f45939c22c9bbcd1c795ae",
+    "generator_digest": "357c53fb659c5076de1d65ccb0b397446227b71a42be9d1603d46168015c9e4b",
+    "worker_hash": "63a5a7b8cbac43ced3b35f93f77e4ca7163340903250d1ef73ac6ff42b01a17e"
+  },
+  "cases": 40,
+  "status": "complete",
+  "baseline_checkpoint": "docs/baseline/pre_grounding",
+  "mode": "hybrid_rerank",
+  "baseline_reused_from": null,
+  "questions_path": "C:\\Users\\asus\\Downloads\\FLLM\\AI-Assistant\\evaluation\\final_validation_40.jsonl",
+  "evaluation_protocol": "New question wording frozen before this dataset is evaluated; same corpus and some related fact topics as development sets.",
+  "annotation_provenance": "assistant source-checked; independent human review pending"
+}

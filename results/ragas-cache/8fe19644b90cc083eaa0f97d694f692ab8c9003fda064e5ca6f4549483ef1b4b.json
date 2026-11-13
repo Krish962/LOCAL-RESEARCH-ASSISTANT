@@ -1,0 +1,10 @@
+{
+  "question_id": "single-splade",
+  "metric": "context_recall",
+  "status": "failed",
+  "cache_hit": false,
+  "value": null,
+  "error_type": "ReadTimeout",
+  "error": "",
+  "seconds": 150.01599999994505
+}

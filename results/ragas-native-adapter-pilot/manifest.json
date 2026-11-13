@@ -1,0 +1,25 @@
+{
+  "identity": {
+    "judge": "llama3.2:3b",
+    "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+    "ragas": "0.4.3",
+    "metric_names": [
+      "faithfulness",
+      "context_recall"
+    ],
+    "mode": "hybrid_rerank",
+    "answers_hash": "b3311de33db046b4e858c39242b005d3fd1220a425ba1cb616d327da3bb1715e",
+    "adapter": "ollama-native-schema-v1",
+    "judge_context": 16384,
+    "judge_output_tokens": 768
+  },
+  "selected_cases": 1,
+  "planned_metric_calls": 2,
+  "attempted_metric_calls": 2,
+  "completed_metric_calls": 2,
+  "failed_metric_calls": 0,
+  "wall_seconds": 132.06300000008196,
+  "time_budget_seconds": 300,
+  "status": "complete",
+  "interpretation": "Supplementary local-judge scores; not independent human validation or exact cited-passage support. Refusals excluded and scored separately."
+}

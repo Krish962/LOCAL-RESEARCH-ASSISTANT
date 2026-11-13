@@ -1,0 +1,17 @@
+{
+  "reviewer": "assistant",
+  "independent_human_review": false,
+  "reviewed_cases": 40,
+  "answered_cases": 22,
+  "answered_complete": 7,
+  "answered_partial": 8,
+  "answered_unresponsive_or_wrong": 7,
+  "literal_source_spans_verified": 27,
+  "rubric": {
+    "2": "Direct answer with essential requested facts, or correct refusal of an unanswerable control.",
+    "1": "Some requested information is provided, but essential requested details are missing.",
+    "0": "Wrong/irrelevant answer or no answer to an answerable case."
+  },
+  "limitation": "Literal quote provenance is not question-answer correctness; semantic citation support is not independently scored.",
+  "questions_hash": "6df09fbf0420f93931858040ffa84dbcc41e847308f7f7a52d72f8716c9d35bd"
+}

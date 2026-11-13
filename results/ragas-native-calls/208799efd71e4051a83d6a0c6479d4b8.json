@@ -1,0 +1,76 @@
+{
+  "adapter": "ollama-native-schema-v1",
+  "model": "llama3.2:3b",
+  "response_model": "ContextRecallOutput",
+  "prompt": "Given a context and an answer, analyze each statement in the answer and classify if the statement can be attributed to the given context or not.\nUse only binary classification: 1 if the statement can be attributed to the context, 0 if it cannot.\nProvide detailed reasoning for each classification.\nPlease return the output in a JSON format that complies with the following schema as specified in JSON Schema:\n{\"$defs\": {\"ContextRecallClassification\": {\"description\": \"Classification of a single statement.\", \"properties\": {\"statement\": {\"description\": \"Individual statement extracted from the answer\", \"title\": \"Statement\", \"type\": \"string\"}, \"reason\": {\"description\": \"Reasoning for why the statement is or isn't attributable to context\", \"title\": \"Reason\", \"type\": \"string\"}, \"attributed\": {\"description\": \"Binary classification: 1 if the statement can be attributed to context, 0 otherwise\", \"title\": \"Attributed\", \"type\": \"integer\"}}, \"required\": [\"statement\", \"reason\", \"attributed\"], \"title\": \"ContextRecallClassification\", \"type\": \"object\"}}, \"description\": \"Structured output for context recall classifications.\", \"properties\": {\"classifications\": {\"description\": \"List of statement classifications\", \"items\": {\"$ref\": \"#/$defs/ContextRecallClassification\"}, \"title\": \"Classifications\", \"type\": \"array\"}}, \"required\": [\"classifications\"], \"title\": \"ContextRecallOutput\", \"type\": \"object\"}Do not use single quotes in your response but double quotes,properly escaped with a backslash.\n\n--------EXAMPLES-----------\nExample 1\nInput: {\n    \"question\": \"What can you tell me about Albert Einstein?\",\n    \"context\": \"Albert Einstein (14 March 1879 - 18 April 1955) was a German-born theoretical physicist, widely held to be one of the greatest and most influential scientists of all time. Best known for developing the theory of relativity, he also made important contributions to quantum mechanics, and was thus a central figure in the revolutionary reshaping of the scientific understanding of nature that modern physics accomplished in the first decades of the twentieth century. His mass-energy equivalence formula E = mc2, which arises from relativity theory, has been called 'the world's most famous equation'. He received the 1921 Nobel Prize in Physics 'for his services to theoretical physics, and especially for his discovery of the law of the photoelectric effect', a pivotal step in the development of quantum theory. His work is also known for its influence on the philosophy of science. In a 1999 poll of 130 leading physicists worldwide by the British journal Physics World, Einstein was ranked the greatest physicist of all time. His intellectual achievements and originality have made Einstein synonymous with genius.\",\n    \"answer\": \"Albert Einstein, born on 14 March 1879, was a German-born theoretical physicist, widely held to be one of the greatest and most influential scientists of all time. He received the 1921 Nobel Prize in Physics for his services to theoretical physics. He published 4 papers in 1905. Einstein moved to Switzerland in 1895.\"\n}\nOutput: {\n    \"classifications\": [\n        {\n            \"statement\": \"Albert Einstein, born on 14 March 1879, was a German-born theoretical physicist, widely held to be one of the greatest and most influential scientists of all time.\",\n            \"reason\": \"The date of birth of Einstein is mentioned clearly in the context.\",\n            \"attributed\": 1\n        },\n        {\n            \"statement\": \"He received the 1921 Nobel Prize in Physics for his services to theoretical physics.\",\n            \"reason\": \"The exact sentence is present in the given context.\",\n            \"attributed\": 1\n        },\n        {\n            \"statement\": \"He published 4 papers in 1905.\",\n            \"reason\": \"There is no mention about papers he wrote in the given context.\",\n            \"attributed\": 0\n        },\n        {\n            \"statement\": \"Einstein moved to Switzerland in 1895.\",\n            \"reason\": \"There is no supporting evidence for this in the given context.\",\n            \"attributed\": 0\n        }\n    ]\n}\n\nExample 2\nInput: {\n    \"question\": \"who won 2020 icc world cup?\",\n    \"context\": \"The 2022 ICC Men's T20 World Cup, held from October 16 to November 13, 2022, in Australia, was the eighth edition of the tournament. Originally scheduled for 2020, it was postponed due to the COVID-19 pandemic. England emerged victorious, defeating Pakistan by five wickets in the final to clinch their second ICC Men's T20 World Cup title.\",\n    \"answer\": \"England\"\n}\nOutput: {\n    \"classifications\": [\n        {\n            \"statement\": \"England\",\n            \"reason\": \"The context clarifies that England won the 2022 edition (which was originally scheduled for 2020).\",\n            \"attributed\": 1\n        }\n    ]\n}\n\nExample 3\nInput: {\n    \"question\": \"What is the tallest mountain in the world?\",\n    \"context\": \"The Andes is the longest continental mountain range in the world, located in South America. It stretches across seven countries and features many of the highest peaks in the Western Hemisphere. The range is known for its diverse ecosystems, including the high-altitude Andean Plateau and the Amazon rainforest.\",\n    \"answer\": \"Mount Everest.\"\n}\nOutput: {\n    \"classifications\": [\n        {\n            \"statement\": \"Mount Everest.\",\n            \"reason\": \"The provided context discusses the Andes mountain range, which does not include Mount Everest or directly relate to the world's tallest mountain.\",\n            \"attributed\": 0\n        }\n    ]\n}\n-----------------------------\n\nNow perform the same with the following input\ninput: {\n    \"question\": \"Which sparse, dense and hybrid retrieval capabilities does Pyserini support?\",\n    \"context\": \"its reach [2, 3], as Python has emerged as the language of\\nchoice for both data scientists and researchers. This is par ticularly\\nthe case for work on deep learning today, since the major tool k-\\nits (PyTorch [22] and Tensorﬂow [1]) have both adopted Pytho n\\nas their front-end language. Thus, Pyserini aims to be a “fea ture-\\ncomplete” Python interface to Anserini.\\nSparse retrieval support in Pyserini comes entirely from Lucene\\n(via Anserini). To support dense and hybrid retrieval, Pyserini inte-\\ngrates Facebook’s FAISS library for eﬃcient similarity sea rch over\\ndense vectors [11], which in turns integrates the HNSW library [17]\\nto support low-latency querying.\\nmodels.\\n• Pyserini can be used as a standalone module to generate batch\\nretrieval runs or be integrated as a library into an applicat ion\\ndesigned to support interactive retrieval.\\n• Pyserini supports sparse retrieval (e.g., BM25 scoring usi ng bag-\\nof-words representations), dense retrieval (e.g., nearest-neighbor\\nsearch on transformer-encoded representations), as well h ybrid\\nretrieval that integrates both approaches.\\n• Pyserini provides access to data structures and system inte rnals\\nto support advanced users. This includes access to postings, doc-\\nument vectors, and raw term statistics that allow our toolki t to\\nsupport use cases that we had not anticipated.\\nPyserini began as the Python interface to Anserini [27, 28], which\\nfocuses on manipulat ing\\nsparse representations. Dense retrieval capabilities in P yserini are\\nless mature. It is not entirely clear what advanced features would\\nbe desired by researchers, but we anticipate adding support as the\\nneeds and use cases become more clear.\\n4 EXPERIMENTAL RESULTS\\nHaving provided a “tour” of Pyserini and some of the toolkit’ s fea-\\ntures, in this section we present experimental results to quantify its\\neﬀectiveness for ﬁrst-stage retrieval. Currently, Pyseri ni provides\\nsupport for approximately 30 test collections; here, we foc us on\\ntwo popular leaderboards.\\nPyserini provides baselines for two MS MARCO datasets [5]: the\\npassage ranking task (Table 1) and the document ranking task (Ta-\\nble 2). In both cases, we report the oﬃcial metric (MRR@10 for\\nh over\\ndense vectors [11], which in turns integrates the HNSW library [17]\\nto support low-latency querying. Thus, Pyserini provides a super-\\nset of features in Anserini; dense and hybrid retrieval is en tirely\\nmissing from the latter.\\nThis paper is organized in the following manner: After a pre-\\namble on our design philosophy, we begin with a tour of Pyseri ni,\\nhighlighting its main features and providing the reader with a sense\\nof how it might be used in a number of common scenarios. This is\\nfollowed by a presentation of empirical results illustrati ng the use\\nof Pyserini to provide ﬁrst-stage retrieval in two popular r anking\\ntasks today. Before concluding with future plans, we discus s how\\nour group has internalized replicability as a shared norm th rough\",\n    \"answer\": \"Pyserini supports sparse retrieval such as BM25. It supports dense retrieval. It supports hybrid retrieval combining sparse and dense approaches.\"\n}\nOutput: ",
+  "schema": {
+    "$defs": {
+      "ContextRecallClassification": {
+        "description": "Classification of a single statement.",
+        "properties": {
+          "statement": {
+            "description": "Individual statement extracted from the answer",
+            "title": "Statement",
+            "type": "string"
+          },
+          "reason": {
+            "description": "Reasoning for why the statement is or isn't attributable to context",
+            "title": "Reason",
+            "type": "string"
+          },
+          "attributed": {
+            "description": "Binary classification: 1 if the statement can be attributed to context, 0 otherwise",
+            "title": "Attributed",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "statement",
+          "reason",
+          "attributed"
+        ],
+        "title": "ContextRecallClassification",
+        "type": "object"
+      }
+    },
+    "description": "Structured output for context recall classifications.",
+    "properties": {
+      "classifications": {
+        "description": "List of statement classifications",
+        "items": {
+          "$ref": "#/$defs/ContextRecallClassification"
+        },
+        "title": "Classifications",
+        "type": "array"
+      }
+    },
+    "required": [
+      "classifications"
+    ],
+    "title": "ContextRecallOutput",
+    "type": "object"
+  },
+  "status": "completed",
+  "raw": {
+    "model": "llama3.2:3b",
+    "created_at": "2026-11-11T13:05:26.5802816Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 125368487700,
+    "load_duration": 8592100,
+    "prompt_eval_count": 2074,
+    "prompt_eval_duration": 24306186000,
+    "eval_count": 481,
+    "eval_duration": 100932847000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n    \"classifications\": [\n        {\n            \"statement\": \"Pyserini supports sparse retrieval such as BM25.\",\n            \"reason\": \"The context explicitly mentions that Pyserini supports sparse retrieval, which is a specific capability.\",\n            \"attributed\": 1\n        },\n        {\n            \"statement\": \"It supports dense retrieval.\",\n            \"reason\": \"The context mentions that Pyserini supports dense retrieval, which is another specific capability.\",\n            \"attributed\": 1\n        },\n        {\n            \"statement\": \"It supports hybrid retrieval combining sparse and dense approaches.\",\n            \"reason\": \"The context explicitly mentions that Pyserini supports hybrid retrieval, which is a combination of specific capabilities.\",\n            \"attributed\": 1\n        },\n        {\n            \"statement\": \"Pyserini can be used as a standalone module to generate batch retrieval runs or be integrated as a library into an application designed to support interactive retrieval.\",\n            \"reason\": \"This statement is not present in the context, but rather in the description of Pyserini's features.\",\n            \"attributed\": 0\n        },\n        {\n            \"statement\": \"Pyserini provides access to data structures and system internals to support advanced users.\",\n            \"reason\": \"This statement is not present in the context, but rather in the description of Pyserini's features.\",\n            \"attributed\": 0\n        },\n        {\n            \"statement\": \"Pyserini began as the Python interface to Anserini, which focuses on manipulating sparse representations.\",\n            \"reason\": \"This statement is not present in the context, but rather in the description of Pyserini's history.\",\n            \"attributed\": 0\n        },\n        {\n            \"statement\": \"Dense retrieval capabilities in Pyserini are less mature.\",\n            \"reason\": \"This statement is not present in the context, but rather in the description of Pyserini's capabilities.\",\n            \"attributed\": 0\n        },\n        {\n            \"statement\": \"It is not entirely clear what advanced features would be desired by researchers, but we anticipate adding support as the needs and use cases become more clear.\",\n            \"reason\": \"This statement is not present in the context, but rather in the description of Pyserini's future plans.\",\n            \"attributed\": 0\n        }\n    ]\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "seconds": 125.375
+}

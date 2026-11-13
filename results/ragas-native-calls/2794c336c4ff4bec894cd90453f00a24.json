@@ -1,0 +1,76 @@
+{
+  "adapter": "ollama-native-schema-v1",
+  "model": "llama3.2:3b",
+  "response_model": "ContextRecallOutput",
+  "prompt": "Given a context and an answer, analyze each statement in the answer and classify if the statement can be attributed to the given context or not.\nUse only binary classification: 1 if the statement can be attributed to the context, 0 if it cannot.\nProvide detailed reasoning for each classification.\nPlease return the output in a JSON format that complies with the following schema as specified in JSON Schema:\n{\"$defs\": {\"ContextRecallClassification\": {\"description\": \"Classification of a single statement.\", \"properties\": {\"statement\": {\"description\": \"Individual statement extracted from the answer\", \"title\": \"Statement\", \"type\": \"string\"}, \"reason\": {\"description\": \"Reasoning for why the statement is or isn't attributable to context\", \"title\": \"Reason\", \"type\": \"string\"}, \"attributed\": {\"description\": \"Binary classification: 1 if the statement can be attributed to context, 0 otherwise\", \"title\": \"Attributed\", \"type\": \"integer\"}}, \"required\": [\"statement\", \"reason\", \"attributed\"], \"title\": \"ContextRecallClassification\", \"type\": \"object\"}}, \"description\": \"Structured output for context recall classifications.\", \"properties\": {\"classifications\": {\"description\": \"List of statement classifications\", \"items\": {\"$ref\": \"#/$defs/ContextRecallClassification\"}, \"title\": \"Classifications\", \"type\": \"array\"}}, \"required\": [\"classifications\"], \"title\": \"ContextRecallOutput\", \"type\": \"object\"}Do not use single quotes in your response but double quotes,properly escaped with a backslash.\n\n--------EXAMPLES-----------\nExample 1\nInput: {\n    \"question\": \"What can you tell me about Albert Einstein?\",\n    \"context\": \"Albert Einstein (14 March 1879 - 18 April 1955) was a German-born theoretical physicist, widely held to be one of the greatest and most influential scientists of all time. Best known for developing the theory of relativity, he also made important contributions to quantum mechanics, and was thus a central figure in the revolutionary reshaping of the scientific understanding of nature that modern physics accomplished in the first decades of the twentieth century. His mass-energy equivalence formula E = mc2, which arises from relativity theory, has been called 'the world's most famous equation'. He received the 1921 Nobel Prize in Physics 'for his services to theoretical physics, and especially for his discovery of the law of the photoelectric effect', a pivotal step in the development of quantum theory. His work is also known for its influence on the philosophy of science. In a 1999 poll of 130 leading physicists worldwide by the British journal Physics World, Einstein was ranked the greatest physicist of all time. His intellectual achievements and originality have made Einstein synonymous with genius.\",\n    \"answer\": \"Albert Einstein, born on 14 March 1879, was a German-born theoretical physicist, widely held to be one of the greatest and most influential scientists of all time. He received the 1921 Nobel Prize in Physics for his services to theoretical physics. He published 4 papers in 1905. Einstein moved to Switzerland in 1895.\"\n}\nOutput: {\n    \"classifications\": [\n        {\n            \"statement\": \"Albert Einstein, born on 14 March 1879, was a German-born theoretical physicist, widely held to be one of the greatest and most influential scientists of all time.\",\n            \"reason\": \"The date of birth of Einstein is mentioned clearly in the context.\",\n            \"attributed\": 1\n        },\n        {\n            \"statement\": \"He received the 1921 Nobel Prize in Physics for his services to theoretical physics.\",\n            \"reason\": \"The exact sentence is present in the given context.\",\n            \"attributed\": 1\n        },\n        {\n            \"statement\": \"He published 4 papers in 1905.\",\n            \"reason\": \"There is no mention about papers he wrote in the given context.\",\n            \"attributed\": 0\n        },\n        {\n            \"statement\": \"Einstein moved to Switzerland in 1895.\",\n            \"reason\": \"There is no supporting evidence for this in the given context.\",\n            \"attributed\": 0\n        }\n    ]\n}\n\nExample 2\nInput: {\n    \"question\": \"who won 2020 icc world cup?\",\n    \"context\": \"The 2022 ICC Men's T20 World Cup, held from October 16 to November 13, 2022, in Australia, was the eighth edition of the tournament. Originally scheduled for 2020, it was postponed due to the COVID-19 pandemic. England emerged victorious, defeating Pakistan by five wickets in the final to clinch their second ICC Men's T20 World Cup title.\",\n    \"answer\": \"England\"\n}\nOutput: {\n    \"classifications\": [\n        {\n            \"statement\": \"England\",\n            \"reason\": \"The context clarifies that England won the 2022 edition (which was originally scheduled for 2020).\",\n            \"attributed\": 1\n        }\n    ]\n}\n\nExample 3\nInput: {\n    \"question\": \"What is the tallest mountain in the world?\",\n    \"context\": \"The Andes is the longest continental mountain range in the world, located in South America. It stretches across seven countries and features many of the highest peaks in the Western Hemisphere. The range is known for its diverse ecosystems, including the high-altitude Andean Plateau and the Amazon rainforest.\",\n    \"answer\": \"Mount Everest.\"\n}\nOutput: {\n    \"classifications\": [\n        {\n            \"statement\": \"Mount Everest.\",\n            \"reason\": \"The provided context discusses the Andes mountain range, which does not include Mount Everest or directly relate to the world's tallest mountain.\",\n            \"attributed\": 0\n        }\n    ]\n}\n-----------------------------\n\nNow perform the same with the following input\ninput: {\n    \"question\": \"What encoder framework does Dense Passage Retrieval use for questions and passages?\",\n    \"context\": \"this work, we show that\\nretrieval can be practically implemented us-\\ning dense representations alone, where em-\\nbeddings are learned from a small number\\nof questions and passages by a simple dual-\\nencoder framework. When evaluated on a\\nwide range of open-domain QA datasets, our\\ndense retriever outperforms a strong Lucene-\\nBM25 system greatly by 9%-19% absolute in\\nterms of top-20 passage retrieval accuracy, and\\nhelps our end-to-end QA system establish new\\nstate-of-the-art on multiple open-domain QA\\nbenchmarks.1\\n1 Introduction\\nOpen-domain question answering (QA) (V oorhees,\\n1999) is a task that answers factoid questions us-\\ning a large collection of documents. While early\\nQA systems are often complicated and consist of\\nwith cross-attention mecha-\\nnisms, have also been shown effective in passage\\nor dialogue re-ranking tasks (Nogueira and Cho,\\n2019; Humeau et al., 2020). Finally, a concurrent\\nwork (Khattab and Zaharia, 2020) demonstrates\\nthe feasibility of full dense retrieval in IR tasks.\\nInstead of employing the dual-encoder framework,\\nthey introduced a late-interaction operator on top\\nof the BERT encoders.\\nDense retrieval for open-domain QA has been\\nexplored by Das et al. (2019), who propose to re-\\ntrieve relevant passages iteratively using reformu-\\nlated question vectors. As an alternative approach\\nthat skips passage retrieval, Seo et al. (2019) pro-\\npose to encode candidate answer phrases as vectors\\nand directly retrieve the answers to the input ques-\\nin a low-dimensional and continuous\\nspace, such that it can retrieve efﬁciently the top\\nk passages relevant to the input question for the\\nreader at run-time. Note thatM can be very large\\n(e.g., 21 million passages in our experiments, de-\\nscribed in Section 4.1) andk is usually small, such\\nas 20–100.\\n3.1 Overview\\nOur dense passage retriever (DPR) uses a dense\\nencoderEP (·) which maps any text passage to ad-\\ndimensional real-valued vectors and builds an index\\nfor all theM passages that we will use for retrieval.\\n3The ideal size and boundary of a text passage are func-\\ntions of both the retriever and reader. We also experimented\\nwith natural paragraphs in our preliminary trials and found that\\nusing ﬁxed-length passages performs better in both retrieval\\nfrom Apache Lucene1 with default parameters, and\\ntokenize questions and passages with SpaCy.2 In\\nDPR, passages and questions are represented as\\ndense vector representations, computed using two\\nBERT networks. The ranking function is the dot\\nproduct between the query and passage represen-\\ntations. Retrieval is performed using approximate\\nnearest neighbors with the FAISS library.3\\nReading. Our generative model for open domain\\nQA is based on a sequence-to-sequence network,\\npretrained on unsupervised data, such as T5 or\\nBART (Raffel et al., 2019; Lewis et al., 2019). The\\nmodel takes as input the question, as well as the\\nsupport passages, and generates the answer. More\\nprecisely, each retrieved passage and its title are\\nconcatenated with the question, and processed in-\",\n    \"answer\": \"DPR learns question and passage embeddings using a dual encoder.\"\n}\nOutput: ",
+  "schema": {
+    "$defs": {
+      "ContextRecallClassification": {
+        "description": "Classification of a single statement.",
+        "properties": {
+          "statement": {
+            "description": "Individual statement extracted from the answer",
+            "title": "Statement",
+            "type": "string"
+          },
+          "reason": {
+            "description": "Reasoning for why the statement is or isn't attributable to context",
+            "title": "Reason",
+            "type": "string"
+          },
+          "attributed": {
+            "description": "Binary classification: 1 if the statement can be attributed to context, 0 otherwise",
+            "title": "Attributed",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "statement",
+          "reason",
+          "attributed"
+        ],
+        "title": "ContextRecallClassification",
+        "type": "object"
+      }
+    },
+    "description": "Structured output for context recall classifications.",
+    "properties": {
+      "classifications": {
+        "description": "List of statement classifications",
+        "items": {
+          "$ref": "#/$defs/ContextRecallClassification"
+        },
+        "title": "Classifications",
+        "type": "array"
+      }
+    },
+    "required": [
+      "classifications"
+    ],
+    "title": "ContextRecallOutput",
+    "type": "object"
+  },
+  "status": "completed",
+  "raw": {
+    "model": "llama3.2:3b",
+    "created_at": "2026-11-11T12:39:51.9802047Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 60103854000,
+    "load_duration": 7260400,
+    "prompt_eval_count": 2062,
+    "prompt_eval_duration": 47702851000,
+    "eval_count": 66,
+    "eval_duration": 12337261000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n    \"classifications\": [\n        {\n            \"statement\": \"DPR learns question and passage embeddings using a dual encoder.\",\n            \"reason\": \"The provided context explicitly states that Dense Passage Retrieval uses a dual-encoder framework for questions and passages.\",\n            \"attributed\": 1\n        }\n    ]\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "seconds": 60.10900000005495
+}

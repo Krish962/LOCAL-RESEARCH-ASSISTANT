@@ -1,0 +1,13 @@
+{
+  "identity": {
+    "questions_hash": "54c1c13cd61b1125d7ff323f91002163c001bfe71d5f216da7aee0d49392deda",
+    "config_hash": "05c148b3053dafe542dc4c9aedaafdaea7be9936b866d325108744940126b581",
+    "code_hash": "a16370d55afd97145c934f799527a95f4c9f75a5fbdb055a5e6b2b24a4334b62",
+    "baseline_checkpoint_hash": "2d8a958ebf8bd7d44059ee676bccf9daff70c0b745f45939c22c9bbcd1c795ae"
+  },
+  "cases": 16,
+  "status": "complete",
+  "baseline_checkpoint": "docs/baseline/pre_grounding",
+  "mode": "hybrid_rerank",
+  "annotation_provenance": "assistant source-checked; independent human review pending"
+}

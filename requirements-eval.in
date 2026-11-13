@@ -1,0 +1,6 @@
+# Keep optional LLM evaluation isolated if its dependency solver conflicts with runtime.
+ragas==0.4.3
+# RAGAS 0.4 imports ChatVertexAI, removed from community 0.4.x.
+langchain-community==0.3.31
+ollama>=0.5,<1
+sentence-transformers>=5,<7

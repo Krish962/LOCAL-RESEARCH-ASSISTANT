@@ -1,0 +1,142 @@
+{
+  "dataset_id": "course_validation_40_v1",
+  "questions_hash": "6df09fbf0420f93931858040ffa84dbcc41e847308f7f7a52d72f8716c9d35bd",
+  "snapshot_id": "ec55e9ac57a5d242ae1a2a41",
+  "questions": 40,
+  "single": 20,
+  "comparison": 8,
+  "missing_evidence": 8,
+  "no_match": 4,
+  "answerable": 28,
+  "papers": [
+    {
+      "paper_id": "2002.08909",
+      "title": "REALM: Retrieval-Augmented Language Model Pre-Training",
+      "arxiv_id": "2002.08909v1",
+      "pdf_sha256": "0ec1a7ab3de5514c6d3baa8af0322816d4ee7cd4c14b9f2c450cbc9da9e6b363"
+    },
+    {
+      "paper_id": "2004.04906",
+      "title": "Dense Passage Retrieval for Open-Domain Question Answering",
+      "arxiv_id": "2004.04906v3",
+      "pdf_sha256": "3e67fc1a9977715acf722d85f0b7d124b03715e975f6310a4d6c12094190912f"
+    },
+    {
+      "paper_id": "2004.12832",
+      "title": "ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT",
+      "arxiv_id": "2004.12832v2",
+      "pdf_sha256": "2e487d9b96e3c2e5e286d843e98a066adc0442faa3a6e8ddbd1771221bf9ae14"
+    },
+    {
+      "paper_id": "2005.11401",
+      "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      "arxiv_id": "2005.11401v4",
+      "pdf_sha256": "23e3249e9a1e75418d82efecab0ea8c4d033b89c93742f63208d47ce01f21233"
+    },
+    {
+      "paper_id": "2007.01282",
+      "title": "Leveraging Passage Retrieval with Generative Models for Open Domain Question Answering",
+      "arxiv_id": "2007.01282v2",
+      "pdf_sha256": "f1ee7e927c3fb31beb2146f8c205692a91b40dadd65d80e025c6686e4d430953"
+    },
+    {
+      "paper_id": "2102.10073",
+      "title": "Pyserini: An Easy-to-Use Python Toolkit to Support Replicable IR Research with Sparse and Dense Representations",
+      "arxiv_id": "2102.10073v1",
+      "pdf_sha256": "81dad4e341de06395f8ded8088f85c76a4c77f3c311222b7f53a1f2e8854a10e"
+    },
+    {
+      "paper_id": "2104.08663",
+      "title": "BEIR: A Heterogenous Benchmark for Zero-shot Evaluation of Information Retrieval Models",
+      "arxiv_id": "2104.08663v4",
+      "pdf_sha256": "1925755aeb627123d1a63c66f02e5aa2432f7e92751a02bea7c8c3b6bbb6ec33"
+    },
+    {
+      "paper_id": "2107.05720",
+      "title": "SPLADE: Sparse Lexical and Expansion Model for First Stage Ranking",
+      "arxiv_id": "2107.05720v1",
+      "pdf_sha256": "e791451960e47e69b0241d7656c6c61ce40b7c3beff92c944e163e5c3bc54c1a"
+    },
+    {
+      "paper_id": "2112.01488",
+      "title": "ColBERTv2: Effective and Efficient Retrieval via Lightweight Late Interaction",
+      "arxiv_id": "2112.01488v3",
+      "pdf_sha256": "46e0a2712eabf9e0b9486120356a2110f65516fa7e0d75c35e9ee3eef9ea78c0"
+    },
+    {
+      "paper_id": "2207.06300",
+      "title": "Re2G: Retrieve, Rerank, Generate",
+      "arxiv_id": "2207.06300v1",
+      "pdf_sha256": "d7ea1206ec0cf8053342a6686bcd2afa10af1c05f14c6a2394dc84847439c67b"
+    },
+    {
+      "paper_id": "2210.07316",
+      "title": "MTEB: Massive Text Embedding Benchmark",
+      "arxiv_id": "2210.07316v3",
+      "pdf_sha256": "bfd15786180a6546e5bf1361fe42356a884517a6497c27ef6994f444be75e91f"
+    },
+    {
+      "paper_id": "2212.10496",
+      "title": "Precise Zero-Shot Dense Retrieval without Relevance Labels",
+      "arxiv_id": "2212.10496v1",
+      "pdf_sha256": "dc0ae3c5584ed146beee122e6a9ad9c48547dde048d53e9be8435d8f1d354531"
+    },
+    {
+      "paper_id": "2307.03172",
+      "title": "Lost in the Middle: How Language Models Use Long Contexts",
+      "arxiv_id": "2307.03172v3",
+      "pdf_sha256": "653b29619eae2ae4b361d7bdcdc06db4bedcb1b0eabe31814036beca8c1af0b1"
+    },
+    {
+      "paper_id": "2309.15217",
+      "title": "Ragas: Automated Evaluation of Retrieval Augmented Generation",
+      "arxiv_id": "2309.15217v2",
+      "pdf_sha256": "6c24762a3f277fd120ed1adf34b01420ecf92f18ff6d1b5435fa0a09cb804ecb"
+    },
+    {
+      "paper_id": "2310.11511",
+      "title": "Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection",
+      "arxiv_id": "2310.11511v1",
+      "pdf_sha256": "d9eaa1398abac0df67a9d0933a5bf8b6d9d83d2e72da2a486073cd842dd52978"
+    },
+    {
+      "paper_id": "2311.09476",
+      "title": "ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems",
+      "arxiv_id": "2311.09476v2",
+      "pdf_sha256": "16f092b08cce88da551a15a978b51721199e93dc95df406089813411fa51ebec"
+    },
+    {
+      "paper_id": "2312.10997",
+      "title": "Retrieval-Augmented Generation for Large Language Models: A Survey",
+      "arxiv_id": "2312.10997v5",
+      "pdf_sha256": "396a0fadeb4cd40f5c8ccc36b73a0815f6cb4d7f6bfa53b6c48c1f9aba7c7e02"
+    },
+    {
+      "paper_id": "2401.00396",
+      "title": "RAGTruth: A Hallucination Corpus for Developing Trustworthy Retrieval-Augmented Language Models",
+      "arxiv_id": "2401.00396v2",
+      "pdf_sha256": "268a06b73f7266970e0d393f8b27d74b56ac219d6ae1546da765183193a9d837"
+    },
+    {
+      "paper_id": "2401.15884",
+      "title": "Corrective Retrieval Augmented Generation",
+      "arxiv_id": "2401.15884v3",
+      "pdf_sha256": "975aa1fd3c1b603126e93ff99d6504858b61301bf1d34c9df88ebe53a0b026cb"
+    },
+    {
+      "paper_id": "2406.15319",
+      "title": "LongRAG: Enhancing Retrieval-Augmented Generation with Long-context LLMs",
+      "arxiv_id": "2406.15319v3",
+      "pdf_sha256": "ede5b695e5e9cb13dc96919a1bd0d66238875b796fc51f3f466796b67d51bd3a"
+    }
+  ],
+  "evaluation_protocol": "New question wording frozen before this dataset is evaluated; same corpus and some related fact topics as development sets.",
+  "model_answers_generated_during_construction": false,
+  "human_review": "pending",
+  "limitations": [
+    "Assistant-source-checked annotations, not independent human gold.",
+    "Evidence quotations are not exhaustive relevance judgments.",
+    "Term-absence audits can miss visual-only PDF content.",
+    "Do not tune the pipeline on these outcomes and continue calling the set independent validation."
+  ]
+}

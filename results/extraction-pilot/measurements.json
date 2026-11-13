@@ -1,0 +1,68 @@
+{
+  "versions": {
+    "pypdf": "6.21.4",
+    "markitdown": "0.1.9"
+  },
+  "pages": [
+    {
+      "paper_id": "2307.03172",
+      "page_number": 1,
+      "pypdf_characters": 3524,
+      "markitdown_characters": 7483,
+      "pypdf_seconds": 0.06158480001613498,
+      "markitdown_seconds": 0.25048739998601377,
+      "preview": "C:\\Users\\asus\\Downloads\\FLLM\\AI-Assistant\\results\\extraction-pilot\\2307.03172-p1.png",
+      "review_status": "pending_visual_and_source_anchor_review"
+    },
+    {
+      "paper_id": "2307.03172",
+      "page_number": 3,
+      "pypdf_characters": 4905,
+      "markitdown_characters": 6815,
+      "pypdf_seconds": 0.06585639994591475,
+      "markitdown_seconds": 0.2618231000378728,
+      "preview": "C:\\Users\\asus\\Downloads\\FLLM\\AI-Assistant\\results\\extraction-pilot\\2307.03172-p3.png",
+      "review_status": "pending_visual_and_source_anchor_review"
+    },
+    {
+      "paper_id": "2005.11401",
+      "page_number": 2,
+      "pypdf_characters": 4545,
+      "markitdown_characters": 5598,
+      "pypdf_seconds": 0.10341570002492517,
+      "markitdown_seconds": 0.40500809997320175,
+      "preview": "C:\\Users\\asus\\Downloads\\FLLM\\AI-Assistant\\results\\extraction-pilot\\2005.11401-p2.png",
+      "review_status": "pending_visual_and_source_anchor_review"
+    },
+    {
+      "paper_id": "2005.11401",
+      "page_number": 3,
+      "pypdf_characters": 3655,
+      "markitdown_characters": 3762,
+      "pypdf_seconds": 0.0649649000260979,
+      "markitdown_seconds": 0.37552840006537735,
+      "preview": "C:\\Users\\asus\\Downloads\\FLLM\\AI-Assistant\\results\\extraction-pilot\\2005.11401-p3.png",
+      "review_status": "pending_visual_and_source_anchor_review"
+    },
+    {
+      "paper_id": "2309.15217",
+      "page_number": 2,
+      "pypdf_characters": 4814,
+      "markitdown_characters": 8133,
+      "pypdf_seconds": 0.04807999997865409,
+      "markitdown_seconds": 0.2579082000302151,
+      "preview": "C:\\Users\\asus\\Downloads\\FLLM\\AI-Assistant\\results\\extraction-pilot\\2309.15217-p2.png",
+      "review_status": "pending_visual_and_source_anchor_review"
+    },
+    {
+      "paper_id": "2005.11401",
+      "page_number": 6,
+      "pypdf_characters": 4110,
+      "markitdown_characters": 4683,
+      "pypdf_seconds": 0.07792509999126196,
+      "markitdown_seconds": 0.24994589993730187,
+      "preview": "C:\\Users\\asus\\Downloads\\FLLM\\AI-Assistant\\results\\extraction-pilot\\2005.11401-p6.png",
+      "review_status": "pending_visual_and_source_anchor_review"
+    }
+  ]
+}

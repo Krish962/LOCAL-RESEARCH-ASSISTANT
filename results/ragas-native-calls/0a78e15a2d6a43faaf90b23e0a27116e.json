@@ -1,0 +1,76 @@
+{
+  "adapter": "ollama-native-schema-v1",
+  "model": "llama3.2:3b",
+  "response_model": "ContextRecallOutput",
+  "prompt": "Given a context and an answer, analyze each statement in the answer and classify if the statement can be attributed to the given context or not.\nUse only binary classification: 1 if the statement can be attributed to the context, 0 if it cannot.\nProvide detailed reasoning for each classification.\nPlease return the output in a JSON format that complies with the following schema as specified in JSON Schema:\n{\"$defs\": {\"ContextRecallClassification\": {\"description\": \"Classification of a single statement.\", \"properties\": {\"statement\": {\"description\": \"Individual statement extracted from the answer\", \"title\": \"Statement\", \"type\": \"string\"}, \"reason\": {\"description\": \"Reasoning for why the statement is or isn't attributable to context\", \"title\": \"Reason\", \"type\": \"string\"}, \"attributed\": {\"description\": \"Binary classification: 1 if the statement can be attributed to context, 0 otherwise\", \"title\": \"Attributed\", \"type\": \"integer\"}}, \"required\": [\"statement\", \"reason\", \"attributed\"], \"title\": \"ContextRecallClassification\", \"type\": \"object\"}}, \"description\": \"Structured output for context recall classifications.\", \"properties\": {\"classifications\": {\"description\": \"List of statement classifications\", \"items\": {\"$ref\": \"#/$defs/ContextRecallClassification\"}, \"title\": \"Classifications\", \"type\": \"array\"}}, \"required\": [\"classifications\"], \"title\": \"ContextRecallOutput\", \"type\": \"object\"}Do not use single quotes in your response but double quotes,properly escaped with a backslash.\n\n--------EXAMPLES-----------\nExample 1\nInput: {\n    \"question\": \"What can you tell me about Albert Einstein?\",\n    \"context\": \"Albert Einstein (14 March 1879 - 18 April 1955) was a German-born theoretical physicist, widely held to be one of the greatest and most influential scientists of all time. Best known for developing the theory of relativity, he also made important contributions to quantum mechanics, and was thus a central figure in the revolutionary reshaping of the scientific understanding of nature that modern physics accomplished in the first decades of the twentieth century. His mass-energy equivalence formula E = mc2, which arises from relativity theory, has been called 'the world's most famous equation'. He received the 1921 Nobel Prize in Physics 'for his services to theoretical physics, and especially for his discovery of the law of the photoelectric effect', a pivotal step in the development of quantum theory. His work is also known for its influence on the philosophy of science. In a 1999 poll of 130 leading physicists worldwide by the British journal Physics World, Einstein was ranked the greatest physicist of all time. His intellectual achievements and originality have made Einstein synonymous with genius.\",\n    \"answer\": \"Albert Einstein, born on 14 March 1879, was a German-born theoretical physicist, widely held to be one of the greatest and most influential scientists of all time. He received the 1921 Nobel Prize in Physics for his services to theoretical physics. He published 4 papers in 1905. Einstein moved to Switzerland in 1895.\"\n}\nOutput: {\n    \"classifications\": [\n        {\n            \"statement\": \"Albert Einstein, born on 14 March 1879, was a German-born theoretical physicist, widely held to be one of the greatest and most influential scientists of all time.\",\n            \"reason\": \"The date of birth of Einstein is mentioned clearly in the context.\",\n            \"attributed\": 1\n        },\n        {\n            \"statement\": \"He received the 1921 Nobel Prize in Physics for his services to theoretical physics.\",\n            \"reason\": \"The exact sentence is present in the given context.\",\n            \"attributed\": 1\n        },\n        {\n            \"statement\": \"He published 4 papers in 1905.\",\n            \"reason\": \"There is no mention about papers he wrote in the given context.\",\n            \"attributed\": 0\n        },\n        {\n            \"statement\": \"Einstein moved to Switzerland in 1895.\",\n            \"reason\": \"There is no supporting evidence for this in the given context.\",\n            \"attributed\": 0\n        }\n    ]\n}\n\nExample 2\nInput: {\n    \"question\": \"who won 2020 icc world cup?\",\n    \"context\": \"The 2022 ICC Men's T20 World Cup, held from October 16 to November 13, 2022, in Australia, was the eighth edition of the tournament. Originally scheduled for 2020, it was postponed due to the COVID-19 pandemic. England emerged victorious, defeating Pakistan by five wickets in the final to clinch their second ICC Men's T20 World Cup title.\",\n    \"answer\": \"England\"\n}\nOutput: {\n    \"classifications\": [\n        {\n            \"statement\": \"England\",\n            \"reason\": \"The context clarifies that England won the 2022 edition (which was originally scheduled for 2020).\",\n            \"attributed\": 1\n        }\n    ]\n}\n\nExample 3\nInput: {\n    \"question\": \"What is the tallest mountain in the world?\",\n    \"context\": \"The Andes is the longest continental mountain range in the world, located in South America. It stretches across seven countries and features many of the highest peaks in the Western Hemisphere. The range is known for its diverse ecosystems, including the high-altitude Andean Plateau and the Amazon rainforest.\",\n    \"answer\": \"Mount Everest.\"\n}\nOutput: {\n    \"classifications\": [\n        {\n            \"statement\": \"Mount Everest.\",\n            \"reason\": \"The provided context discusses the Andes mountain range, which does not include Mount Everest or directly relate to the world's tallest mountain.\",\n            \"attributed\": 0\n        }\n    ]\n}\n-----------------------------\n\nNow perform the same with the following input\ninput: {\n    \"question\": \"Which two techniques does ColBERTv2 combine to improve late-interaction retrieval?\",\n    \"context\": \"of\\nthese models by an order of magnitude. In this\\nwork, we introduce ColBERTv2, a retriever\\nthat couples an aggressive residual compres-\\nsion mechanism with a denoised supervision\\nstrategy to simultaneously improve the quality\\nand space footprint of late interaction. We\\nevaluate ColBERTv2 across a wide range\\nof benchmarks, establishing state-of-the-art\\nquality within and outside the training domain\\nwhile reducing the space footprint of late\\ninteraction models by 6–10×.\\n1 Introduction\\nNeural information retrieval (IR) has quickly domi-\\nnated the search landscape over the past 2–3 years,\\ndramatically advancing not only passage and doc-\\nument search (Nogueira and Cho, 2019) but also\\nmany knowledge-intensive NLP tasks like open-\\ndomain question answering (Guu et al., 2020),\\nColBERTv2:\\nEffective and Efﬁcient Retrieval via Lightweight Late Interaction\\nKeshav Santhanam∗\\nStanford University\\nOmar Khattab∗\\nStanford University\\nJon Saad-Falcon\\nGeorgia Institute of Technology\\nChristopher Potts\\nStanford University\\nMatei Zaharia\\nStanford University\\nAbstract\\nNeural information retrieval (IR) has greatly\\nadvanced search and other knowledge-\\nintensive language tasks. While many neural\\nIR methods encode queries and documents\\ninto single-vector representations, late\\ninteraction models produce multi-vector repre-\\nsentations at the granularity of each token and\\ndecompose relevance modeling into scalable\\ntoken-level computations. This decomposition\\nhas been shown to make late interaction more\\neffective, but it inﬂates the space footprint of\\nthese models by an order of magnitude. In this\\nwork, we introduce ColBERTv2, a retriever\\nthat couples an aggressive residual compres-\\nthe\\ngap between single-vector and interaction-based\\nmodels, including late interaction architectures like\\nColBERT. Our results in §5 reveal that such super-\\nvision can improve multi-vector models dramati-\\ncally, resulting in state-of-the-art retrieval quality.\\n3.3 Representation\\nWe hypothesize that the ColBERT vectors cluster\\ninto regions that capture highly-speciﬁc token se-\\nmantics. We test this hypothesis in Appendix A,\\nwhere evidence suggests that vectors correspond-\\ning to each sense of a word cluster closely, with\\nonly minor variation due to context. We exploit\\nthis regularity with a residual representation that\\ndramatically reduces the space footprint of late in-\\nteraction models, completely off-the-shelf without\\narchitectural or training changes. Given a set of\\ncentroids C, ColBERTv2 encodes each vector v as\\noised supervision. We couple those in\\nColBERTv2,1 a new late-interaction retriever that\\nemploys a simple combination of distillation from\\n1Code, models, and LoTTE data are maintained at https:\\n//github.com/stanford-futuredata/ColBERT\\narXiv:2112.01488v3  [cs.IR]  10 Jul 2022\",\n    \"answer\": \"ColBERTv2 uses residual compression. It combines compression with denoised supervision.\"\n}\nOutput: ",
+  "schema": {
+    "$defs": {
+      "ContextRecallClassification": {
+        "description": "Classification of a single statement.",
+        "properties": {
+          "statement": {
+            "description": "Individual statement extracted from the answer",
+            "title": "Statement",
+            "type": "string"
+          },
+          "reason": {
+            "description": "Reasoning for why the statement is or isn't attributable to context",
+            "title": "Reason",
+            "type": "string"
+          },
+          "attributed": {
+            "description": "Binary classification: 1 if the statement can be attributed to context, 0 otherwise",
+            "title": "Attributed",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "statement",
+          "reason",
+          "attributed"
+        ],
+        "title": "ContextRecallClassification",
+        "type": "object"
+      }
+    },
+    "description": "Structured output for context recall classifications.",
+    "properties": {
+      "classifications": {
+        "description": "List of statement classifications",
+        "items": {
+          "$ref": "#/$defs/ContextRecallClassification"
+        },
+        "title": "Classifications",
+        "type": "array"
+      }
+    },
+    "required": [
+      "classifications"
+    ],
+    "title": "ContextRecallOutput",
+    "type": "object"
+  },
+  "status": "completed",
+  "raw": {
+    "model": "llama3.2:3b",
+    "created_at": "2026-11-11T13:20:30.9518854Z",
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 97341333500,
+    "load_duration": 9713800,
+    "prompt_eval_count": 1997,
+    "prompt_eval_duration": 20767471000,
+    "eval_count": 406,
+    "eval_duration": 76438900000,
+    "message": {
+      "role": "assistant",
+      "content": "{\n    \"classifications\": [\n        {\n            \"statement\": \"ColBERTv2 uses residual compression.\",\n            \"reason\": \"The provided context explicitly states that ColBERTv2 employs an aggressive residual compression mechanism.\",\n            \"attributed\": 1\n        },\n        {\n            \"statement\": \"It combines compression with denoised supervision.\",\n            \"reason\": \"The context clearly mentions that ColBERTv2 couples an aggressive residual compression mechanism with a denoised supervision strategy.\",\n            \"attributed\": 1\n        },\n        {\n            \"statement\": \"Neural information retrieval (IR) has quickly dominated the search landscape over the past 2–3 years, dramatically advancing not only passage and document search (Nogueira and Cho, 2019) but also many knowledge-intensive NLP tasks like open-domain question answering (Guu et al., 2020),\",\n            \"reason\": \"The context discusses the advancements in neural information retrieval, but it does not specifically mention the techniques used by ColBERTv2.\",\n            \"attributed\": 0\n        },\n        {\n            \"statement\": \"We introduce ColBERTv2, a retriever that couples an aggressive residual compres-\\nsion mechanism with a denoised supervision\\nstrategy to simultaneously improve the quality\\nand space footprint of late interaction.\",\n            \"reason\": \"The context explicitly states the purpose and mechanism of ColBERTv2, but it does not provide information about the specific techniques used.\",\n            \"attributed\": 0\n        },\n        {\n            \"statement\": \"We evaluate ColBERTv2 across a wide range\\nof benchmarks, establishing state-of-the-art\\nquality within and outside the training domain\\nwhile reducing the space footprint of late\\ninteraction models by 6–10×.\",\n            \"reason\": \"The context discusses the evaluation and performance of ColBERTv2, but it does not provide information about the specific techniques used.\",\n            \"attributed\": 0\n        }\n    ]\n}",
+      "thinking": null,
+      "images": null,
+      "tool_name": null,
+      "tool_calls": null
+    },
+    "logprobs": null
+  },
+  "seconds": 97.34399999992456
+}

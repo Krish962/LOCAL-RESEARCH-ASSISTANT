@@ -1,0 +1,81 @@
+Lost in the Middle: How Language Models Use Long Contexts
+Nelson F . Liu1∗ Kevin Lin2 John Hewitt1 Ashwin Paranjape3
+Michele Bevilacqua3 Fabio Petroni3 Percy Liang1
+1Stanford University 2University of California, Berkeley 3Samaya AI
+nfliu@cs.stanford.edu
+Abstract
+While recent language models have the abil-
+ity to take long contexts as input, relatively
+little is known about how well they use
+longer context. We analyze the performance
+of language models on two tasks that require
+identifying relevant information in their in-
+put contexts: multi-document question an-
+swering and key-value retrieval. We find that
+performance can degrade significantly when
+changing the position of relevant informa-
+tion, indicating that current language models
+do not robustly make use of information in
+long input contexts. In particular, we observe
+that performance is often highest when rele-
+vant information occurs at the beginning or
+end of the input context, and significantly
+degrades when models must access relevant
+information in the middle of long contexts,
+even for explicitly long-context models. Our
+analysis provides a better understanding of
+how language models use their input context
+and provides new evaluation protocols for
+future long-context language models.
+1 Introduction
+Language models have become an important and
+flexible building block in a variety of user-facing
+language technologies, including conversational
+interfaces, search and summarization, and collabo-
+rative writing (Shuster et al., 2022; Thoppilan et al.,
+2022; Lee et al., 2022, inter alia). These models
+perform downstream tasks primarily via prompting:
+all relevant task specification and data to process is
+formatted as a textual input context, and the model
+returns a generated text completion. These input
+contexts can contain thousands of tokens, espe-
+cially when language models are used to process
+long documents (e.g., legal or scientific documents,
+conversation histories, etc.) or when language mod-
+els are augmented with external information (e.g.,
+*Work partially completed as an intern at Samaya AI.
+1st 5th 10th 15th 20th
+Position of Document with the Answer
+55
+60
+65
+70
+75Accuracy
+20 T otal Retrieved Documents (~4K tokens)
+gpt-3.5-turbo-0613
+gpt-3.5-turbo-0613 (closed-book)
+Figure 1: Changing the location of relevant information
+(in this case, the position of the passage that answers an
+input question) within the language model’s input con-
+text results in a U-shaped performance curve—models
+are better at using relevant information that occurs at the
+very beginning (primacy bias) or end of its input context
+(recency bias), and performance degrades significantly
+when models must access and use information located
+in the middle of its input context.
+relevant documents from a search engine, database
+query results, etc; Petroni et al., 2020; Ram et al.,
+2023; Shi et al., 2023; Mallen et al., 2023; Schick
+et al., 2023, inter alia).
+Handling these use-cases requires language mod-
+els to successfully operate over long sequences. Ex-
+isting language models are generally implemented
+with Transformers (Vaswani et al., 2017), which re-
+quire memory and compute that increases quadrat-
+ically in sequence length. As a result, Trans-
+former language models were often trained with
+relatively small context windows (between 512-
+2048 tokens). Recent improvements in hardware
+(e.g., faster GPUs with more memory) and algo-
+rithms (Dai et al., 2019; Dao et al., 2022; Poli et al.,
+arXiv:2307.03172v3  [cs.CL]  20 Nov 2023

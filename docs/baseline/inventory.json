@@ -1,0 +1,70 @@
+{
+  "created_at": "2026-11-11T08:22:41.408575+00:00",
+  "python": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "logical_cpus": 8,
+  "disk_free_bytes": 75536183296,
+  "files": [
+    {
+      "path": "app.py",
+      "bytes": 3795,
+      "sha256": "51dac1be70a85c73560170c320e765e27c10d7983485a949f5ce7cddc48c49df"
+    },
+    {
+      "path": "enhanced_app.py",
+      "bytes": 5016,
+      "sha256": "c1a82781e86f2102e5fcf58d3229e0618edb9e44df9bf4457e7bf59a0cbd6a34"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 94,
+      "sha256": "6edb374dbddc6b68109b8810d32039f6393905e6c0f5edb88b02e9ffaf23a9c6"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5270,
+      "sha256": "f95c3c2a43bef134c642682be878e7eb5501d7d88ca64c7f117efe76f52d99f3"
+    },
+    {
+      "path": "arxiv_papers/1904.04185v1.Multiple_imputation_in_data_that_grow_over_time__A_comparison_of_three_strategies.pdf",
+      "bytes": 626100,
+      "sha256": "6b9866d55e5355a2884d819c05aa95150d1a4d8fa82e2c4514e25603ed9a0d2b"
+    },
+    {
+      "path": "arxiv_papers/1911.06646v2.Imputing_missing_values_with_unsupervised_random_trees.pdf",
+      "bytes": 193369,
+      "sha256": "162a33d4bd4bd6fa962be8547a541f4b71a4ea1e1c1ed4694992cbdde8d404aa"
+    },
+    {
+      "path": "arxiv_papers/2002.10709v1.Missing_Data_Imputation_for_Classification_Problems.pdf",
+      "bytes": 474973,
+      "sha256": "9aa3ea095a23d4c73fc73bb696e5b28b98ebc4cf3be2df22f17a611f19adf673"
+    },
+    {
+      "path": "arxiv_papers/2305.06042v2.Blockwise_Principal_Component_Analysis_for_monotone_missing_data_imputation_and_dimensionality_reduction.pdf",
+      "bytes": 322501,
+      "sha256": "160d9f44446d34e1ae9f3d5437d8645affe02aa69f3cc4d79434b8eba6893f4e"
+    },
+    {
+      "path": "arxiv_papers/2403.14687v1.On_the_Performance_of_Imputation_Techniques_for_Missing_Values_on_Healthcare_Datasets.pdf",
+      "bytes": 828608,
+      "sha256": "53f570f99c72d033afaaca841d6bd27c7df30eadc1ec37cc736d765749652d9c"
+    },
+    {
+      "path": "tmp/local_qdrant/.lock",
+      "bytes": 13,
+      "sha256": "67a987c432005e3afcc13a871b3ddabaeee0f4504058da65b0769016d3083b44"
+    },
+    {
+      "path": "tmp/local_qdrant/collection/arxiv_papers/storage.sqlite",
+      "bytes": 2600960,
+      "sha256": "c190b12eaa575de679f2459cc5fdf22e7fb4b2adc4f5b0af4864b0df83b2c87e"
+    },
+    {
+      "path": "tmp/local_qdrant/meta.json",
+      "bytes": 513,
+      "sha256": "91eaefea7b08ca270a303b9fa925419a00c0c0658e9e40b36d9f6e308d906899"
+    }
+  ],
+  "notes": "Copied original source; PDF/index files remain in place. Original app was not launched."
+}
