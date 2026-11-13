@@ -144,7 +144,7 @@ This six-page comparison requires Poppler's pdftoppm on PATH. MarkItDown is opti
 
 Reproduction commands write separate retrieval, filtering, Ragas and extraction output folders. They preserve the recorded experiment files.
 
-## Repository and deliverables
+## Repository
 
 | Location | Contents |
 |---|---|
@@ -154,13 +154,10 @@ Reproduction commands write separate retrieval, filtering, Ragas and extraction 
 | evaluation/ | Experiment code, frozen questions, relevance labels and generation baseline |
 | data/ | Course-paper source and corpus manifests |
 | results/ | Recorded evidence behind reported experiments |
-| deliverables/ | Report, presentation and editable LaTeX source |
 
 Model weights, Python environments, downloaded PDFs, generated indexes, runtime traces and evaluator caches remain local and are excluded from Git. A fresh installation downloads the models and paper collection before running inference or source-span checks. Rebuilding with different PDF/model revisions can change source spans and outcomes.
 
-The submission artifacts are the [report](deliverables/Group_29_Report.pdf), [presentation](deliverables/Group_29_Presentation.pptx) and [LaTeX source](deliverables/Group_29_LaTeX_Source.zip).
-
-The report source uses the official ICLR 2025 style. Its main file is report.tex, compiled with pdfLaTeX and BibTeX or imported into Overleaf.
+The submission archive supplies the report and presentation alongside the Code folder. Document artifacts are kept outside the code repository.
 
 ## Limitations and attribution
 

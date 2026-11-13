@@ -77,6 +77,8 @@ submission/.tools/
 /results/ragas-cache/
 /results/ragas-native-calls/
 /results/*/code_checkpoint/
+/data/discovery/
+/deliverables/
 
 # Project documentation is consolidated in the root README.
 *.md
