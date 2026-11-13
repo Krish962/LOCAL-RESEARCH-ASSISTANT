@@ -1,9 +1,0 @@
-{
-  "question_id": "single-colbert2",
-  "metric": "context_recall",
-  "status": "completed",
-  "cache_hit": false,
-  "value": 0.4,
-  "reason": null,
-  "seconds": 97.34399999992456
-}

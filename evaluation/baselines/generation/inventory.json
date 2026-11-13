@@ -1,0 +1,77 @@
+{
+  "baseline_run": "answers-test-754021b26646",
+  "files": [
+    {
+      "path": "assistant/__init__.py",
+      "sha256": "83b3ace2b357e8bb159a29ed7db7bc755a83cd363ccf794f0658004491a9ca84"
+    },
+    {
+      "path": "assistant/artifacts.py",
+      "sha256": "c7a94c730c2aae3d23dc3c269bd295ec310cb7e782bebf7e6ca0e975bf69ed81"
+    },
+    {
+      "path": "assistant/chunking.py",
+      "sha256": "6491a2fda49947b1fb22291b63e8367e57121e7b3403085d6243a0ba135bd4c4"
+    },
+    {
+      "path": "assistant/citations.py",
+      "sha256": "61e0cf07cc3284e5dde2058057868f910f310733f128289bb22dda5bda9f38b9"
+    },
+    {
+      "path": "assistant/config.py",
+      "sha256": "d87b2252ad542d0f512565fa0031c9b2dd6e694a20f65ac1775957c09879be13"
+    },
+    {
+      "path": "assistant/context.py",
+      "sha256": "7071ac86aa38b630aee89412c2806365fe1ca902a1d321064716adceda01c442"
+    },
+    {
+      "path": "assistant/embeddings.py",
+      "sha256": "dfdd0bcbe8c03413a963d4eefcef5e7c7c905e63d672949d286427b24817e119"
+    },
+    {
+      "path": "assistant/extraction.py",
+      "sha256": "a3ba5db2737e2d55ed8aaa64fa7bc0e1ffa579742fdc7170586f52dd409d5c10"
+    },
+    {
+      "path": "assistant/filters.py",
+      "sha256": "e26f63f87d144f16b1a099b22c3a8cda845c7e2aed6bf3e937c22d8e5167d4b0"
+    },
+    {
+      "path": "assistant/generation.py",
+      "sha256": "594a8a7766c508e5ce9e137788f6fa4825fc19fb35c7fb92a96f3a0afc73eaaf"
+    },
+    {
+      "path": "assistant/lexical.py",
+      "sha256": "3d5c1de8f43b0d6d88f777a6f199c1e5335e6bba86985f8390a91b9c5ba62cb0"
+    },
+    {
+      "path": "assistant/reranking.py",
+      "sha256": "08ccb554bf7d862309b2f8f1925b72c66039f87c497df4422322b811d405b614"
+    },
+    {
+      "path": "assistant/retrieval.py",
+      "sha256": "c19885a8f102355e30c5d99e66431ac426b229cf04019fd6b2a9c0251f546f15"
+    },
+    {
+      "path": "assistant/schemas.py",
+      "sha256": "f05e944bb3f6297f0200d65938812dd13739a21ac6179e4d79ab1c78b9525365"
+    },
+    {
+      "path": "assistant/service.py",
+      "sha256": "74f390ba0c5770cea1ae8e4e88aaf2ec60d3d4da25dbd403f1872fd396b4335b"
+    },
+    {
+      "path": "assistant/storage.py",
+      "sha256": "0bc2212b884bee95b9cca77ed3cef9c3d0fcb44790c82d04dc1b77d20b713db9"
+    },
+    {
+      "path": "assistant/telemetry.py",
+      "sha256": "6a4dd97480098dbc1f62daed0e2e92bece140c52d39810c727fc4a70a9865956"
+    },
+    {
+      "path": "configs/default.json",
+      "sha256": "53ef1f98e99f4d854d2d5923dfbf3d90d69eb00bc217a055a6faaf32c678b415"
+    }
+  ]
+}

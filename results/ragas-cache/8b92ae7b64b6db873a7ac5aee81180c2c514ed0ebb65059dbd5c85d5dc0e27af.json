@@ -1,9 +1,0 @@
-{
-  "question_id": "single-dpr",
-  "metric": "context_recall",
-  "status": "completed",
-  "cache_hit": false,
-  "value": 1.0,
-  "reason": null,
-  "seconds": 60.10900000005495
-}

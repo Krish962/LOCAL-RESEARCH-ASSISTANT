@@ -1,5 +1,0 @@
-mode,heldout_answers,annotated_span_recall_at_4,semantic_ndcg_at_4,semantic_precision_at_4,semantic_direct_precision_at_4,semantic_direct_mrr_at_4,semantic_judged_questions,constraint_violations,valid_citation_id_rate,correct_refusals,false_refusals,unanswerable_questions,answered_unanswerable_questions,unanswerable_answer_rate,runtime_failures,mean_end_to_end_seconds,reviewed_answers,reviewed_correctness_mean_0_to_2,reviewed_cited_claim_support
-bm25,30,0.2361111111111111,0.6127810735675293,0.7916666666666666,0.4583333333333333,0.7083333333333334,6,0,1.0,2,1,6,4,0.6666666666666666,0,28.037133549991996,0,,
-dense,30,0.0,0.6132732938432689,0.875,0.375,0.6666666666666666,6,0,1.0,2,1,6,4,0.6666666666666666,0,26.423420746674918,0,,
-hybrid,30,0.2361111111111111,0.7327645164017501,0.9166666666666666,0.5,0.9166666666666666,6,0,1.0,2,1,6,4,0.6666666666666666,0,23.178326739995587,0,,
-hybrid_rerank,30,0.3611111111111111,0.8660026304421168,1.0,0.6666666666666666,1.0,6,0,1.0,2,1,6,4,0.6666666666666666,0,24.98918841332973,0,,

@@ -1,7 +1,0 @@
-{
-  "cases": 16,
-  "config_hash": "b5fa6d1d32bb1fe80bb6c6778fe69a505e8dd5c0a9f2a93c5657502e0f502430",
-  "correct_refusals": 16,
-  "runtime_failures": 0,
-  "scope": "Previously inspected failures; regression tests, not a new held-out benchmark"
-}

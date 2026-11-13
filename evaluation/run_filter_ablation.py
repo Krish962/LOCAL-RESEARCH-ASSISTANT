@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import argparse
 from dataclasses import asdict
+from pathlib import Path
 from assistant.artifacts import atomic_json,read_jsonl,write_jsonl
 from assistant.config import PROJECT_ROOT
 from assistant.context import pack_context
@@ -11,6 +13,9 @@ from .metrics import evidence_metrics
 
 
 def main():
+    parser = argparse.ArgumentParser(description='Compare retrieval with metadata filters enabled and disabled')
+    parser.add_argument('--output', type=Path, default=PROJECT_ROOT/'results/filter-reproduction')
+    args = parser.parse_args()
     service = AssistantService()
     rows = []
     try:
@@ -31,7 +36,7 @@ def main():
                         'violation_rate':violations/len(sources) if sources else None,
                         'correct_empty_match':not sources if not expected_ids else None,
                         'evidence':evidence_metrics(sources,case['evidence_groups'],4),'timings_ms':trace.data['timings_ms']})
-        path = PROJECT_ROOT/'results/filter-ablation'
+        path = args.output
         write_jsonl(path/'measurements.jsonl',rows)
         atomic_json(path/'manifest.json',{'cases':len(cases),'arms':6,'status':'complete',
             'scope':'Experimental disabling of user filters only; active corpus/readiness remain enforced. Production never relaxes filters.'})

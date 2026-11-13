@@ -82,8 +82,8 @@ def build_ui():
             raise gr.Error(str(exc)) from exc
         return result["answer"],result["sources"],{k:result[k] for k in ("status","filters","timings_ms","trace_id","evidence_checks") if k in result}
 
-    with gr.Blocks(title="AI Research Assistant",analytics_enabled=False) as demo:
-        gr.Markdown("# AI Research Assistant\nIndex papers once. Ask questions with exact paper/page evidence.")
+    with gr.Blocks(title="Local Research Assistant",analytics_enabled=False) as demo:
+        gr.Markdown("# Local Research Assistant\nSearch papers and inspect answers with paper/page evidence.")
         state = gr.State()
         status = gr.Textbox(label="Library status",interactive=False)
         refresh_library = gr.Button("Refresh library")

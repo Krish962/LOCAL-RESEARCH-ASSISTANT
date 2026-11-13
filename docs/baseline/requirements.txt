@@ -1,8 +1,0 @@
-arxiv
-langchain_community
-langchain
-langchain-ollama
-gpt4all
-qdrant-client
-gradio
-pypdf

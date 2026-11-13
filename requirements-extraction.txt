@@ -1,0 +1,2 @@
+# Optional extractor comparison reported in the project.
+markitdown[pdf]==0.1.9

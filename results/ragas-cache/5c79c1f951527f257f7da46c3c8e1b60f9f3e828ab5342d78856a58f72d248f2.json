@@ -1,9 +1,0 @@
-{
-  "question_id": "single-fid",
-  "metric": "answer_relevancy",
-  "status": "completed",
-  "cache_hit": false,
-  "value": 0.6077288244250891,
-  "reason": null,
-  "seconds": 26.625
-}

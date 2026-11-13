@@ -6,7 +6,12 @@ try {
     return
 } catch { }
 $runtime = Join-Path $projectRoot '.runtime/ollama/ollama.exe'
-if (-not (Test-Path -LiteralPath $runtime)) { throw 'Portable Ollama missing. Install Ollama or run scripts/fetch_ollama_cpu.py after obtaining the official release metadata.' }
+if (-not (Test-Path -LiteralPath $runtime)) {
+    $installedOllama = Get-Command ollama.exe -ErrorAction SilentlyContinue
+    if (-not $installedOllama) { throw 'Ollama is missing. Install Ollama and restart the terminal.' }
+    $runtime = $installedOllama.Source
+}
+New-Item -ItemType Directory -Path (Join-Path $projectRoot '.runtime') -Force | Out-Null
 $env:OLLAMA_MODELS = Join-Path $projectRoot '.cache/ollama_models'
 $env:OLLAMA_HOST = '127.0.0.1:11434'
 $env:OLLAMA_NO_CLOUD = 'true'

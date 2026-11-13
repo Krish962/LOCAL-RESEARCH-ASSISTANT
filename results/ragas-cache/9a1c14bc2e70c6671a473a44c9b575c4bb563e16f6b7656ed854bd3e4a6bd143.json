@@ -1,9 +1,0 @@
-{
-  "question_id": "single-splade",
-  "metric": "context_precision",
-  "status": "completed",
-  "cache_hit": false,
-  "value": 0.999999999975,
-  "reason": null,
-  "seconds": 60.43700000003446
-}

@@ -1,9 +1,0 @@
-{
-  "question_id": "single-pyserini",
-  "metric": "faithfulness",
-  "status": "completed",
-  "cache_hit": false,
-  "value": 1.0,
-  "reason": null,
-  "seconds": 75.29700000002049
-}

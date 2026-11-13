@@ -16,7 +16,7 @@ def main():
     root=Path(__file__).resolve().parents[1]
     os.environ.setdefault('HF_HOME',str(root/'.cache/huggingface'))
     os.environ.setdefault('HF_HUB_OFFLINE','1')
-    checkpoint=root/'docs/baseline/pre_grounding'
+    checkpoint=root/'evaluation/baselines/generation'
     if args.arm=='baseline':sys.path.insert(0,str(checkpoint))
     from assistant.config import Config
     from assistant.service import AssistantService

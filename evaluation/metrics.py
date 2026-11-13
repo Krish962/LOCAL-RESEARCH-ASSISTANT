@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import math
 import re
-from collections import Counter
 
 
 def chunk_of(hit: dict) -> dict:
@@ -54,24 +53,3 @@ def citation_ids(answer: str, sources: list[dict]) -> dict:
     valid = sum(f"S{n}" in {s["label"] for s in sources} for n in labels)
     return {"emitted":len(labels),"valid":valid,"validity":valid/len(labels) if labels else None,
             "missing_citations":not bool(labels)}
-
-
-def normalized_answer(text: str) -> str:
-    text = re.sub(r"\[S\d+\]", "",text)
-    return " ".join(re.findall(r"\w+",text.casefold()))
-
-
-def short_answer_metrics(answer: str, reference: str) -> dict:
-    a, b = normalized_answer(answer), normalized_answer(reference)
-    aa, bb = Counter(a.split()), Counter(b.split())
-    overlap = sum((aa & bb).values())
-    precision = overlap/sum(aa.values()) if aa else 0.
-    recall = overlap/sum(bb.values()) if bb else 0.
-    return {"exact_match":int(a==b),"token_f1":2*precision*recall/(precision+recall) if precision+recall else 0.}
-
-
-def abstention_counts(answerable: bool, status: str) -> dict:
-    refusal = status in {"insufficient_evidence","no_match"}
-    failure = status in {"error","invalid_output"}
-    return {"correct_refusal":int(not answerable and refusal),"false_refusal":int(answerable and refusal),
-            "unsupported_answer_risk":int(not answerable and status=="answered"),"runtime_failure":int(failure)}

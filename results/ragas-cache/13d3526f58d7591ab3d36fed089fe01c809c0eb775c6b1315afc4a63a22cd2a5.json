@@ -1,9 +1,0 @@
-{
-  "question_id": "single-beir",
-  "metric": "faithfulness",
-  "status": "completed",
-  "cache_hit": false,
-  "value": 0.9166666666666666,
-  "reason": null,
-  "seconds": 168.57800000009593
-}

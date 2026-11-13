@@ -1,4 +1,0 @@
-{"question_id": "single-dpr", "metric": "faithfulness", "status": "completed", "cache_hit": true, "value": 1.0, "reason": null, "seconds": 71.93800000008196}
-{"question_id": "single-dpr", "metric": "context_recall", "status": "completed", "cache_hit": true, "value": 1.0, "reason": null, "seconds": 60.10900000005495}
-{"question_id": "single-dpr", "metric": "context_precision", "status": "completed", "cache_hit": true, "value": 0.999999999975, "reason": null, "seconds": 69.375}
-{"question_id": "single-dpr", "metric": "answer_relevancy", "status": "completed", "cache_hit": true, "value": 0.9267640857939411, "reason": null, "seconds": 22.688000000081956}

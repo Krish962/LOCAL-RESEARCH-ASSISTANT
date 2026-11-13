@@ -72,5 +72,12 @@ submission/.tools/
 
 # Final deliverables, requirements and experiment JSON/JSONL remain versionable.
 
-# Original documentation checkpoint retained only for local integrity checks.
-/docs/baseline/README.md
+
+# Generated evaluator caches are rebuilt from retained answers and score records.
+/results/ragas-cache/
+/results/ragas-native-calls/
+/results/*/code_checkpoint/
+
+# Project documentation is consolidated in the root README.
+*.md
+!/README.md
